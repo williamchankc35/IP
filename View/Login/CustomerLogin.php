@@ -5,6 +5,7 @@
 <head>
      <meta charset="UTF-8">
   <link rel="stylesheet"  type="text/css" href="../../Css/LoginSystem.css">
+  <script src="LoginSystem.js"></script>
 </head>
 <body>
 <div class="login-page">
