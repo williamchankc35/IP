@@ -68,7 +68,7 @@ class customerDA {
         $conn = null;
     }
     
-    public function showAllCatalog() {
+    public function showAllCustomer() {
         echo "<table style='border: solid 1px black;'>";
         echo "<tr><th>ID</th><th>Type</th><th>Name</th><th>Email</th><th>Credit</th><th>Status</th></tr>";
         try {
