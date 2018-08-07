@@ -1,4 +1,6 @@
 <?php
+
+
 ?>
 <!DOCTYPE html>
 
@@ -25,7 +27,7 @@
                 <div class="navigation">
                     <ul>
                         <li class="no-sub"> <a href="Catalog.php" target="iframe">Catalog</a>
-                        <li class="no-sub"> <a href="Invoice.php" target="iframe">Order</a>    
+                        <li class="no-sub"> <a href="Order.php" target="iframe">Order</a>    
                         <li class="no-sub"> <a href="Invoice.php" target="iframe">Invoice</a>
                         <li class="no-sub"> <a href="ProfileMaintain.php" target="iframe">Profile maintain</a>   
                     </ul>
@@ -33,7 +35,7 @@
             </div>
 
             <div class="frame" >
-                <iframe frameBorder="0" height="100%" width="100%" src="" name="iframe" scrolling="no"></iframe>
+                <iframe frameBorder="0" height="100%" width="100%" src="" name="iframe"scrolling="yes" ></iframe>
             </div>
         </div>
         <?php
