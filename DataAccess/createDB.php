@@ -27,12 +27,14 @@ try {
         cataDesc VARCHAR(200)
         )");
     $conn->exec("CREATE TABLE $dbname.customer(
-        custID INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-        custType VARCHAR(50),
-        custName VARCHAR(50),
-        custEmail VARCHAR(200),
-        custCredit INT(6),
-        custStatus VARCHAR(200)
+        CusID VARCHAR(8) PRIMARY KEY,
+        CusType VARCHAR(10),
+        CusName VARCHAR(50),
+        Username VARCHAR(50),
+        Password VARCHAR(50),      
+        Email VARCHAR(200),
+        CreditLimit DOUBLE(6,2),
+        Status VARCHAR(200)
         )");
     $conn->exec("CREATE TABLE $dbname.invoice(
         invID INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,

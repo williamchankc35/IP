@@ -1,9 +1,9 @@
 <?Php
-/*include_once '../../Controller/CustomerControl.php';
-include_once '../../Model/Customer.php';
-include_once '../../DA/LoiginDBSetting.php';
-include_once '../../DA/CustomerDA.php';
-*/
+include_once '../../Controller/CustomerControl.php';
+include_once '../../Class/Customer.php';
+include_once '../../DataAccess/LoiginDBSetting.php';
+include_once '../../DataAccess/CustomerDA.php';
+/* Form Required Field Validation */
 Global $Preset1;
 Global $Preset2;
 
@@ -25,34 +25,37 @@ foreach($_POST as $key=>$value) {
 	break;
 	}
 }
-
+/* Password Matching Validation */
 if($_POST['Password'] != $_POST['confirm_password']){ 
 $error_message = 'Passwords should be same<br>'; 
 }
 
+/* Email Validation */
 if(!isset($error_message)) {
 	if (!filter_var($_POST["Email"], FILTER_VALIDATE_EMAIL)) {
 	$error_message = "Invalid Email Address";
 	}
 }
 
+/* Validation to check if gender is selected */
 if(!isset($error_message)) {
 if(!isset($_POST["CusType"])) {
 $error_message = " All Fields are required";
 }
 }
 
+/* Validation to check if Terms and Conditions are accepted */
 if(!isset($error_message)) {
 	if(!isset($_POST["terms"])) {
 	$error_message = "Accept Terms and Conditions to Register";
 	}
 }
-/*
+
 if(!isset($error_message)) {
     $mysql_hostname = "localhost";
     $mysql_user = "root";
     $mysql_password = "";
-    $mysql_database = "flowerdb";
+    $mysql_database = "fioreflowershopdb";
     $Customer = new CustomerControl();
     $dbh = new PDO("mysql:dbname={$mysql_database};host={$mysql_hostname};port=3306", $mysql_user, $mysql_password);
     $CusID = $Customer->getNewID();
@@ -83,7 +86,7 @@ if(!isset($error_message)) {
                             $error_message = "Problem in registration. Try Again!";	
                             
 }
-} */                     
+}                      
 }
 
 ?>
@@ -91,8 +94,8 @@ if(!isset($error_message)) {
 <html>
   <head>
     <title>Customer Registration From</title>
-     <a  href="../Login/CustomerLogin.php">
-            <img class="logo" src="../images/taruc.jpg" />
+     <a  href="CustomerLogin.php">
+         <h3>Go back login page</h3>
         </a><h2 align="Center">Customer Registration Form</h2>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">   
