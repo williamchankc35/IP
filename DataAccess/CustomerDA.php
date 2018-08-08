@@ -1,7 +1,7 @@
 <?php
 
 include_once 'LoiginDBSetting.php';
-include_once '../../Model/Customer.php';
+include_once '../../Class/Customer.php';
 
 class CustomerDA {
     
