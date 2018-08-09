@@ -36,7 +36,6 @@ foreach($_POST as $key=>$value) {
 if($_POST['Password'] != $_POST['confirm_password']){ 
 $error_message = 'Passwords should be same<br>'; 
 }
-
 /* Email Validation */
 if(!isset($error_message)) {
 	if (!filter_var($_POST["Email"], FILTER_VALIDATE_EMAIL)) {
@@ -74,7 +73,6 @@ $error_message = "Problem in update. Try Again!";
 
 }
 }
-
 // Close connection
 unset($pdo);
 ?>
