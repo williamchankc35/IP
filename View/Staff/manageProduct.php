@@ -60,13 +60,19 @@ and open the template in the editor.
                     <td><input type="reset" value="Reset" name="Reset" />
                         <input type="submit" value="Back" name="Back" /></td>
                 </tr>
-                <tr>
-                    <?php
-                    $show = new productDA();
-                    $show->showAllProduct();
-                    ?>
-                </tr>
             </tbody>
+        </table>
+        <br/>
+        <table border="1">
+            <tr>
+                <th>Product List</th>
+            </tr>
+            <tr>
+            <?php
+            $show = new productDA();
+            $show->showAllProduct();
+            ?>
+            </tr>
         </table>
 
     </body>
