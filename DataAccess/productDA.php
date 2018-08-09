@@ -11,12 +11,14 @@ class productDA {
     private $username = "root";
     private $password = "";
     private $dbname = "FioreFlowershopDB";
+    
 
     public function insertProduct(product $product) {
         try {
             $sql = "INSERT INTO " . $this->tableName . " (prodID, prodType, prodDesc, prodAvailable) "
                     . "VALUES ('" . $product->getProdID() . "','" . $product->getProdType() . "','" . $product->getProdDesc() . "','" . $product->getProdAvailable() . "')";
-            $conn = new connectDB();
+            $conn = new PDO("mysql:host=$this->servername;dbname=$this->dbname", $this->username, $this->password);
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $conn->exec($sql);
             echo "New record created successfully";
         } catch (PDOException $e) {
@@ -29,7 +31,8 @@ class productDA {
         echo "<table style='border: solid 1px black;'>";
         echo "<tr><th>ID</th><th>Type</th><th>Description</th><th>Available?</th></tr>";
         try {
-            $conn = new connectDB();
+            $conn = new PDO("mysql:host=$this->servername;dbname=$this->dbname", $this->username, $this->password);
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $stmt = $conn->prepare("SELECT * FROM " . $this->tableName . " WHERE prodID = '" . $prodID . "'");
             $stmt->execute();
             $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
@@ -45,7 +48,8 @@ class productDA {
 
     public function updateProduct(product $product) {
         try {
-            $conn = new connectDB();
+            $conn = new PDO("mysql:host=$this->servername;dbname=$this->dbname", $this->username, $this->password);
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $sql = "UPDATE " . $this->tableName . " SET prodType = '" . $catalog->getProdType() .
                     "' , prodDesc = '" . $catalog->getProdDesc() . "' , prodAvailable = '" . $catalog->getProdAvailable() .
                     "' WHERE prodID = '" . $catalog->getProdID() . "'";
@@ -60,7 +64,8 @@ class productDA {
 
     public function deleteProduct($prodID) {
         try {
-            $conn = new connectDB();
+            $conn = new PDO("mysql:host=$this->servername;dbname=$this->dbname", $this->username, $this->password);
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $sql = "DELETE FROM " . $this->tableName . " WHERE prodID = '" . $prodID . "'";
             $conn->exec($sql);
             echo "Record deleted successfully";
