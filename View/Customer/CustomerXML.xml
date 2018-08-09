@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomerTable>
+    <CustomerRow>
+        <CusID>CS0001</CusID>
+        <CusType>Corporate</CusType>
+        <CusName>Leong Tzee Yang</CusName>
+        <Username>LTY</Username>
+        <Password>LTY</Password>
+        <Email>LTY@hotmail.com</Email>
+        <CreditLimit>5000.00</CreditLimit>
+        <Status>Good</Status>
+                    
+    </CustomerRow>
+      <CustomerRow>
+        <CusID>CS0002</CusID>
+        <CusType>Corporate</CusType>
+        <CusName>Leong Tzee Yang</CusName>
+        <Username>LTY</Username>
+        <Password>LTY</Password>
+        <Email>LTY@hotmail.com</Email>
+        <CreditLimit>5000.00</CreditLimit>
+        <Status>Good</Status>
+                    
+    </CustomerRow>
+</CustomerTable>
