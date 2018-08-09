@@ -1,9 +1,9 @@
 <?php
-include_once dirname(__FILE__) . '/../DataAccess/productDA.php';
+
+    include_once dirname(__FILE__) . '/../DataAccess/productDA.php';
 //include_once dirname(__FILE__) . '/../Class/product.php';
 
     $da = new productDA;
-    
 if (isset($_POST['CProd'])) {
     $prodType = $_POST["prodType"];
     $prodDesc = $_POST["prodDesc"];

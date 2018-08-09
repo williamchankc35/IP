@@ -1,23 +1,10 @@
 <?Php
-include_once '../../Controller/CustomerControl.php';
-include_once '../../Class/Customer.php';
-include_once '../../DataAccess/LoiginDBSetting.php';
-include_once '../../DataAccess/CustomerDA.php';
 /* Form Required Field Validation */
-Global $Preset1;
-Global $Preset2;
+
 
 if(!empty($_POST["register-user"])) {
-    
-    if($_POST['CusType'] = 'Corporate'){ 
-    $Preset1 = 1000.00;
-    $Preset2 ='Good';
-}
-   else if($_POST['CusType'] = 'Consumer'){ 
-    $Preset1 = 0.00;
-    $Preset2='Consumer';
-}
-else{ $error_message ="Please select Customer type";}
+
+
     
 foreach($_POST as $key=>$value) {
 	if(empty($_POST[$key])) {
@@ -45,46 +32,8 @@ if(!isset($error_message)) {
 	}
 }
 
-if(!isset($error_message)) {
-    $mysql_hostname = "localhost";
-    $mysql_user = "root";
-    $mysql_password = "";
-    $mysql_database = "fioreflowershopdb";
-    
-    $Customer = new CustomerControl();
-    
-    $dbh = new PDO("mysql:dbname={$mysql_database};host={$mysql_hostname};port=3306", $mysql_user, $mysql_password);
-    $CusID = $Customer->getNewID();
-    $CusType = $_POST["CusType"];
-    $CusName = $_POST["CusName"];
-    $Username =  $_POST["Username"];
-    $Password = $_POST["Password"];
-    $Email =  $_POST["Email"];
-    $CreditLimit = $Preset1;
-    $Status = $Preset2;
-                               
-   $sql = $dbh->prepare("INSERT INTO customer (CusID,CusType,CusName,Username,Password,Email,CreditLimit,Status) VALUES (?,?,?,?,?,?,?,?)");  
-    if ($sql->execute(array(
-                                            $CusID,
-                                            $CusType,
-                                            $CusName,
-                                            $Username,
-                                            $Password,
-                                            $Email,
-                                            $CreditLimit,
-                                            $Status,
-                                        ))){                           
-                           $error_message = "";
-                            $success_message = "You have registered successfully!";	
-                            unset($_POST);
-                           
-                        } else {
-                            $error_message = "Problem in registration. Try Again!";	
-                            
-}
-}                      
-}
 
+}
 ?>
 
 <html>
@@ -145,7 +94,7 @@ if(!isset($error_message)) {
         </head>
   <body>
    
-    <form name="frmRegistration" method="post" action="">
+      <form name="frmRegistration" method="post" action="../../Controller/CustomerControl.php">
 	<table border="0" width="500" align="center" class="demo-table">
 		<?php if(!empty($success_message)) { ?>	
 		<div class="success-message"><?php if(isset($success_message)) echo $success_message; ?></div>
@@ -159,8 +108,8 @@ if(!isset($error_message)) {
 		</tr>
                 <tr>
 			<td>Customer Type</td>
-			<td><input type="radio" name="CusType" value="Consumer" <?php if(isset($_POST['CusType']) && $_POST['CusType']=="Consumer") { ?>checked<?php  } ?>> Consumer
-			<input type="radio" name="CusType" value="Corporate" <?php if(isset($_POST['CusType']) && $_POST['CusType']=="Corporate") { ?>checked<?php  } ?>> Corporate
+			<td><input type="radio" name="CusType" value="Consumer" <?php /* if(isset($_POST['CusType']) && $_POST['CusType']=="Consumer") { ?>checked<?php  } */?>> Consumer
+			<input type="radio" name="CusType" value="Corporate" <?php /*if(isset($_POST['CusType']) && $_POST['CusType']=="Corporate") { ?>checked<?php  } */?>> Corporate
 			</td>
 		</tr>
                 <tr>

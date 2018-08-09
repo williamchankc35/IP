@@ -14,7 +14,7 @@ include_once '../../DataAccess/CustomerDA.php';
 Global $Preset1;
 Global $Preset2;
 
-if(!empty($_POST["register-user"])) {
+if(!empty($_POST["Update-user"])) {
     
     if($_POST['CusType'] = 'Corporate'){ 
     $Preset1 = 1000.00;
@@ -121,7 +121,7 @@ unset($pdo);
 		
 		<tr>
 			<td colspan=2>
-			<input type="submit" name="register-user" value="Register" class="btnRegister"></td>
+			<input type="submit" name="Update-user" value="Register" class="btnRegister"></td>
 		</tr>
 	</table>
        
