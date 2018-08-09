@@ -14,7 +14,7 @@ class Customer{
         $this->CusID = $CusID;
         $this->CusType = $CusType;
         $this->CusName = $CusName;
-        $this->UserName = $Username;
+        $this->Username = $Username;
         $this->Password = $Password;
         $this->Email = $Email;
         $this->CreditLimit = $CreditLimit;

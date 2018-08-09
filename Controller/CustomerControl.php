@@ -1,14 +1,40 @@
 <?php
-include_once '../../DataAccess/CustomerDA.php';
+include_once dirname(__FILE__).'/../DataAccess/CustomerDA.php';
+
+$da = new CustomerDA();
+$new = new CustomerControl();
+
+if(isset($_POST["register-user"])){
+        
+    if($_POST['CusType'] = 'Corporate'){ 
+    $Preset1 = 1000.00;
+    $Preset2 ='Good';
+}
+   else if($_POST['CusType'] = 'Consumer'){ 
+    $Preset1 = 0.00;
+    $Preset2='Consumer';
+}
+    $CusID = $new->getNewID();
+    $CusType = $_POST["CusType"];
+    $CusName = $_POST["CusName"];
+    $Username =  $_POST["Username"];
+    $Password = $_POST["Password"];
+    $Email =  $_POST["Email"];
+    $CreditLimit = $Preset1;
+    $Status = $Preset2;
+    $customer = new Customer($CusID,$CusType,$CusName,$Username,$Password, $Email, $CreditLimit,$Status);
+    $da->RegisterUser($customer);
+    }
 
 
 class CustomerControl{
    
-    private $CustomerDA;
+    private $CustomerDA;    
     
     function __construct() {
         $this->CustomerDA = new CustomerDA();
     }
+   
    
     public function retrieveRecordwithID($CusID) {
         if ($this->CustomerDA == NULL) {
@@ -30,14 +56,6 @@ class CustomerControl{
         }
         return $this->CustomerDA->updateRecord($Customer);
     }
-
-   /* function searchRecord($find) {
-        if ($this->studentDA == NULL) {
-            $this->studentDA = new StudentDA();
-        }
-        return $this->studentDA->searchRecord($find);
-    }*/
-
     function retrieveAll() {
         if ($this->CustomerDA == NULL) {
             $this->CustomerDA = new CustomerDA();
@@ -59,15 +77,6 @@ class CustomerControl{
     
         
     }
-    
-    
-    /*public function retrieveRecordwithProgID($progID) {
-    if ($this->studentDA == NULL) {
-            $this->studentDA = new StudentDA();
-        }
-        return $this->studentDA->retrieveRecordwithProgID($progID);
-                          
-    }*/
     
     public function retrieveNamewithID($CusID) {
         if ($this->CustomerDA  == NULL) {
@@ -95,3 +104,10 @@ class CustomerControl{
     }
     
 }
+?>
+
+   <html>
+    <form action="../View/Customer/CustomerLogin.php">
+        <input type="submit" value="Back" name="Back" />
+    </form>
+</html>
