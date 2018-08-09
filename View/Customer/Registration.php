@@ -1,38 +1,27 @@
 <?Php
-/* Form Required Field Validation */
 
-
-if(!empty($_POST["register-user"])) {
-
-
-    
+if(!empty($_POST["register-user"])) {  
 foreach($_POST as $key=>$value) {
 	if(empty($_POST[$key])) {
 	$error_message = "All Fields are required";
 	break;
 	}
 }
-/* Password Matching Validation */
 if($_POST['Password'] != $_POST['confirm_password']){ 
 $error_message = 'Passwords should be same<br>'; 
 }
 
-/* Email Validation */
 if(!isset($error_message)) {
 	if (!filter_var($_POST["Email"], FILTER_VALIDATE_EMAIL)) {
 	$error_message = "Invalid Email Address";
 	}
 }
 
-
-/* Validation to check if Terms and Conditions are accepted */
 if(!isset($error_message)) {
 	if(!isset($_POST["terms"])) {
 	$error_message = "Accept Terms and Conditions to Register";
 	}
 }
-
-
 }
 ?>
 

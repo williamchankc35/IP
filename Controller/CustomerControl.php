@@ -1,7 +1,5 @@
 <?php
 include_once dirname(__FILE__).'/../DataAccess/CustomerDA.php';
-
-
 $da = new CustomerDA();
 $new = new CustomerControl();
 
@@ -27,6 +25,15 @@ if(isset($_POST["register-user"])){
     $da->RegisterUser($customer);
     
     }
+if(isset($_POST["Login"])){
+   
+  
+    $username = $_POST["username"];
+    $password = $_POST["password"];
+  
+    $da->Login($username,$password);
+    
+}
 
 if(isset($_POST["Update-user"])){
   
