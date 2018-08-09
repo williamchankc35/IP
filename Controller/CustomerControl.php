@@ -1,6 +1,7 @@
 <?php
 include_once dirname(__FILE__).'/../DataAccess/CustomerDA.php';
 
+
 $da = new CustomerDA();
 $new = new CustomerControl();
 
@@ -24,6 +25,31 @@ if(isset($_POST["register-user"])){
     $Status = $Preset2;
     $customer = new Customer($CusID,$CusType,$CusName,$Username,$Password, $Email, $CreditLimit,$Status);
     $da->RegisterUser($customer);
+    
+    }
+
+if(isset($_POST["Update-user"])){
+  
+        
+    if($_POST['CusType'] = 'Corporate'){ 
+    $Preset1 = 1000.00;
+    $Preset2 ='Good';
+}
+   else if($_POST['CusType'] = 'Consumer'){ 
+    $Preset1 = 0.00;
+    $Preset2='Consumer';
+}
+    $CusID = null;
+    $CusType = $_POST["CusType"];
+    $CusName = $_POST["CusName"];
+    $username =  $_SESSION['username'];
+    $Password = null;
+    $Email =  $_POST["Email"];
+    $CreditLimit = $Preset1;
+    $Status = $Preset2;
+    $customer = new Customer($CusID,$CusType,$CusName,$username, $Password,$Email, $CreditLimit,$Status);
+    $da->updateCustomer($customer,$username);
+    
     }
 
 
@@ -106,8 +132,4 @@ class CustomerControl{
 }
 ?>
 
-   <html>
-    <form action="../View/Customer/CustomerLogin.php">
-        <input type="submit" value="Back" name="Back" />
-    </form>
-</html>
+

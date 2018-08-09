@@ -42,39 +42,8 @@ if(!isset($error_message)) {
 	$error_message = "Invalid Email Address";
 	}
 }
-
-
-if(!isset($error_message)) {
-      $mysql_hostname = "localhost";
-    $mysql_user = "root";
-    $mysql_password = "";
-    $mysql_database = "fioreflowershopdb";
-    $pdo = new PDO("mysql:dbname={$mysql_database};host={$mysql_hostname};port=3306", $mysql_user, $mysql_password);
-    $sql = "UPDATE customer SET   CusType = :cusType,             
-            CusName = :cusname,
-            Email= :email,
-            CreditLimit = :creditlimit,
-            Status = :status
-            WHERE Username = '".$_SESSION['username']."'";
-$stmt = $pdo->prepare($sql);                                  
-$stmt->bindParam(':cusname', $_POST['CusName'], PDO::PARAM_STR);       
-$stmt->bindParam(':cusType', $_POST['CusType'], PDO::PARAM_STR);    
-$stmt->bindParam(':email', $_POST['Email'], PDO::PARAM_STR);
-$stmt->bindParam(':creditlimit', $Preset1, PDO::PARAM_STR);    
-$stmt->bindParam(':status', $Preset2, PDO::PARAM_STR);
-// use PARAM_STR although a number    
-if ($stmt->execute()){ 
- $error_message = "";
- $success_message = "Update successfully!";	
-unset($_POST);}
-else {
-$error_message = "Problem in update. Try Again!";
 }
 
-}
-}
-// Close connection
-unset($pdo);
 ?>
 <html>
   <head>
@@ -121,7 +90,7 @@ unset($pdo);
 		
 		<tr>
 			<td colspan=2>
-			<input type="submit" name="Update-user" value="Register" class="btnRegister"></td>
+			<input type="submit" name="Update-user" value="Update" class="btnRegister"></td>
 		</tr>
 	</table>
        
