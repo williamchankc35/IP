@@ -5,8 +5,7 @@
  */
 
 class order {
-    
-    private $orderID;
+
     private $orderDate;
     private $orderCustID;
     private $orderCustName;
@@ -14,14 +13,13 @@ class order {
     private $orderProdName;
     private $orderQuantity;
     private $orderUnitPrice;
-    private $orderPD;//pick up or delivery
-    private $orderAddress;//delivery address
+    private $orderPD; //pick up or delivery
+    private $orderAddress; //delivery address
     private $orderPDDate;
     private $orderPDTime;
     private $orderTotalAmount;
-    
-    function __construct($orderID, $orderDate, $orderCustID, $orderCustName, $orderProdID, $orderProdName, $orderQuantity, $orderUnitPrice, $orderPD, $orderAddress, $orderPDDate, $orderPDTime, $orderTotalAmount) {
-        $this->orderID = $orderID;
+
+    function __construct($orderDate, $orderCustID, $orderCustName, $orderProdID, $orderProdName, $orderQuantity, $orderUnitPrice, $orderPD, $orderAddress, $orderPDDate, $orderPDTime, $orderTotalAmount) {
         $this->orderDate = $orderDate;
         $this->orderCustID = $orderCustID;
         $this->orderCustName = $orderCustName;
@@ -34,10 +32,6 @@ class order {
         $this->orderPDDate = $orderPDDate;
         $this->orderPDTime = $orderPDTime;
         $this->orderTotalAmount = $orderTotalAmount;
-    }
-    
-    function getOrderID() {
-        return $this->orderID;
     }
 
     function getOrderDate() {
@@ -86,10 +80,6 @@ class order {
 
     function getOrderTotalAmount() {
         return $this->orderTotalAmount;
-    }
-
-    function setOrderID($orderID) {
-        $this->orderID = $orderID;
     }
 
     function setOrderDate($orderDate) {

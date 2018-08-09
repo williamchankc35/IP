@@ -15,12 +15,12 @@ class orderDA{
     public function insertOrder(order $order){
         try{
             $sql = "INSERT INTO" . $this->tableName . 
-                    "(orderID, orderDate, "
+                    "( orderDate, "
                     . "orderCustID, orderCustName, orderProdID, "
                     . "orderProdName, orderQuantity, orderUnitPrice, "
                     . "orderPD, orderAddress, orderPDDate, orderPDTime, "
                     . "orderTotalAmount)"
-            ."VALUES('" .$order->getOrderID() . "','" .$order->getOrderDate() . "','" 
+            ."VALUES('" .$order->getOrderDate() . "','" 
                     .$order->getOrderCustID() . "','" .$order->getOrderCustName() . "','" 
                     .$order->getProdID() . "','" .$order->getOrderProdName() . "','" 
                     .$order->getOrderQuantity() . "','" .$order->getOrderUnitPrice() . "','" 

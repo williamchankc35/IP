@@ -6,7 +6,6 @@
 
 class invoice {
     
-    private $invID;
     private $invDate;
     private $invCustID;
     private $invCustName;
@@ -16,8 +15,7 @@ class invoice {
     private $invTotalOrderAmount;
     private $invTotalAmount;
     
-    function __construct($invID, $invDate, $invCustID, $invCustName, $invCreateDate, $invOrderID, $invOrderDate, $invTotalOrderAmount, $invTotalAmount) {
-        $this->invID = $invID;
+    function __construct($invDate, $invCustID, $invCustName, $invCreateDate, $invOrderID, $invOrderDate, $invTotalOrderAmount, $invTotalAmount) {
         $this->invDate = $invDate;
         $this->invCustID = $invCustID;
         $this->invCustName = $invCustName;
@@ -26,10 +24,6 @@ class invoice {
         $this->invOrderDate = $invOrderDate;
         $this->invTotalOrderAmount = $invTotalOrderAmount;
         $this->invTotalAmount = $invTotalAmount;
-    }
-
-    function getInvID() {
-        return $this->invID;
     }
 
     function getInvDate() {
@@ -62,10 +56,6 @@ class invoice {
 
     function getInvTotalAmount() {
         return $this->invTotalAmount;
-    }
-
-    function setInvID($invID) {
-        $this->invID = $invID;
     }
 
     function setInvDate($invDate) {

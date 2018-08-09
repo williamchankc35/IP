@@ -6,21 +6,21 @@
 
 class product {
     
-    private $prodID;
+    //private $prodID;
     private $prodType;
     private $prodDesc;
     private $prodAvailable;
     
-    function __construct($prodID, $prodType, $prodDesc, $prodAvailable) {
-        $this->prodID = $prodID;
+    function __construct($prodType, $prodDesc, $prodAvailable) {
+//        $this->prodID = $prodID;
         $this->prodType = $prodType;
         $this->prodDesc = $prodDesc;
         $this->prodAvailable = $prodAvailable;
     }
 
-    function getProdID() {
-        return $this->prodID;
-    }
+//    function getProdID() {
+//        return $this->prodID;
+//    }
 
     function getProdType() {
         return $this->prodType;
@@ -34,9 +34,9 @@ class product {
         return $this->prodAvailable;
     }
 
-    function setProdID($prodID) {
-        $this->prodID = $prodID;
-    }
+//    function setProdID($prodID) {
+//        $this->prodID = $prodID;
+//    }
 
     function setProdType($prodType) {
         $this->prodType = $prodType;

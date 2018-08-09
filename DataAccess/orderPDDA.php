@@ -14,8 +14,8 @@ class orderPDDA {
     
     public function insertOrderPD(orderPD $orderPD) {
         try {
-            $sql = "INSERT INTO " . $this->tableName . " (orderPDID, orderPDDate, orderPDTime, orderPDStaffID, orderPDStaffName) "
-                    . "VALUES ('" . $orderPD->getOrderPDID() . "','" . $orderPD->getOrderPDDate() 
+            $sql = "INSERT INTO " . $this->tableName . " (orderPDDate, orderPDTime, orderPDStaffID, orderPDStaffName) "
+                    . "VALUES ('" . $orderPD->getOrderPDDate() 
                     . "','" . $orderPD->getOrderPDTime() . "','" . $orderPD->getOrderPDStaffID() . "','" . $orderPD->getOrderPDStaffName() . "')";
             $conn = new PDO("mysql:host=$this->servername;dbname=$this->dbname", $this->username, $this->password);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
