@@ -1,6 +1,5 @@
 <?php
-require_once '../../DataAccess/config.php';
- 
+require_once '../../DataAccess/config.php'; 
 $username = $password = "";
 $username_err = $password_err = "";
 
@@ -19,8 +18,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
     
 }
-?>
- 
+?> 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,10 +31,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     </style>
 </head>
 <body>
-    <div class="wrapper">
-        <h2>Login</h2>
+    <div class="wrapper" align="center">
+        <h2>Customer Login</h2>
         <p>Please fill in your credentials to login.</p>
-        <form action="../../Controller/CustomerControl.php" method="post">
+        <form action="../../Controller/CustomerControl.php" method="post" >
             <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
                 <label>Username</label>
                 <input type="text" name="username"class="form-control" value="<?php echo $username; ?>">
