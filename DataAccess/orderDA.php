@@ -1,12 +1,16 @@
 <?php
 
-include_once 'connectDB.php';
+//include_once 'connectDB.php';
 include_once 'TableRows.php';
 include_once dirname(__FILE__).'/../Class/order.php';
 
 class orderDA{
     
     private $tableName ="order";
+    private $servername = "localhost";
+    private $username = "root";
+    private $password = "";
+    private $dbname = "FioreFlowershopDB";
     
     public function insertOrder(order $order){
         try{
@@ -24,7 +28,8 @@ class orderDA{
                     .$order->getOrderPDDATE() . "','" .$order->getOrderPDTime() . "','" 
                     .$order->getOrderTotalAmount()  . "')";
                                                        
-            $conn = new connectDB();
+            $conn = new PDO("mysql:host=$this->servername;dbname=$this->dbname", $this->username, $this->password);
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $conn->exec($sql);
             echo "New record created successfully";
         } catch (PDOException $e) {
@@ -42,7 +47,8 @@ class orderDA{
        . "<th>Address</th><th>PD Date</th><th>PD Time</th>"
        . "<th>Address</th></tr>";
         try {
-            $conn = new connectDB();
+            $conn = new PDO("mysql:host=$this->servername;dbname=$this->dbname", $this->username, $this->password);
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $stmt = $conn->prepare("SELECT * FROM " . $this->tableName . " WHERE orderID = '" . $orderID . "'");
             $stmt->execute();
             $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
@@ -59,7 +65,8 @@ class orderDA{
     
     public function updateOrder(order $order) {
         try {
-            $conn = new connectDB();
+            $conn = new PDO("mysql:host=$this->servername;dbname=$this->dbname", $this->username, $this->password);
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $sql = "UPDATE " . $this->tableName . " SET orderDate = '" . $order->getOrderDate() .
                     "' , orderCustID = '" . $order->getOrderCustID() . "' ,orderCustName = '" . $order->getOrderCustName() .
                     "' , orderProdID = '" . $order->getOrderProdID() . "', orderProdName = '" . $order->getOrderProdName() .
@@ -78,7 +85,8 @@ class orderDA{
     } 
     public function deleteOrder($orderID) {
         try {
-            $conn = new connectDB();
+            $conn = new PDO("mysql:host=$this->servername;dbname=$this->dbname", $this->username, $this->password);
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $sql = "DELETE FROM " . $this->tableName . " WHERE orderID = '" . $orderID . "'";
             $conn->exec($sql);
             echo "Record deleted successfully";
@@ -95,7 +103,8 @@ class orderDA{
        . "<th>Address</th><th>PD Date</th><th>PD Time</th>"
        . "<th>Address</th></tr>";
         try {
-            $conn = new connectDB();
+            $conn = new PDO("mysql:host=$this->servername;dbname=$this->dbname", $this->username, $this->password);
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $stmt = $conn->prepare("SELECT * FROM " . $this->tableName );
             $stmt->execute();
             $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
