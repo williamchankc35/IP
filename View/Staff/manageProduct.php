@@ -11,9 +11,7 @@ and open the template in the editor.
     </head>
     <body>
         <?php
-        include_once dirname(__FILE__).'/../../DataAccess/productDA.php';
-        $show = new productDA();
-        $show->showAllProduct();
+        include_once dirname(__FILE__) . '/../../DataAccess/productDA.php';
         ?>
         <table border="1">
             <thead>
@@ -61,6 +59,12 @@ and open the template in the editor.
                 <tr>
                     <td><input type="reset" value="Reset" name="Reset" />
                         <input type="submit" value="Back" name="Back" /></td>
+                </tr>
+                <tr>
+                    <?php
+                    $show = new productDA();
+                    $show->showAllProduct();
+                    ?>
                 </tr>
             </tbody>
         </table>
