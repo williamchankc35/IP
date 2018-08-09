@@ -15,8 +15,8 @@ class productDA {
 
     public function insertProduct(product $product) {
         try {
-            $sql = "INSERT INTO " . $this->tableName . " (prodID, prodType, prodDesc, prodAvailable) "
-                    . "VALUES ('" . $product->getProdID() . "','" . $product->getProdType() . "','" . $product->getProdDesc() . "','" . $product->getProdAvailable() . "')";
+            $sql = "INSERT INTO " . $this->tableName . " (prodType, prodDesc, prodAvailable) "
+                    . "VALUES ('" . $product->getProdType() . "','" . $product->getProdDesc() . "','" . $product->getProdAvailable() . "')";
             $conn = new PDO("mysql:host=$this->servername;dbname=$this->dbname", $this->username, $this->password);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $conn->exec($sql);
