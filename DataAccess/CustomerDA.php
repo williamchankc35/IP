@@ -1,12 +1,60 @@
 <?php
 
 include_once 'LoiginDBSetting.php';
-include_once '../../Class/Customer.php';
+include_once dirname(__FILE__).'/../Class/Customer.php';
+include_once dirname(__FILE__).'/../Controller/CustomerControl.php';
+include_once 'TableRows.php';
 
 class CustomerDA {
     
     private $tableName ="customer";
+    private $servername = "localhost";
+    private $username = "root";
+    private $password = "";
+    private $dbname = "FioreFlowershopDB";
     
+      public function RegisterUser(customer $customer) {
+        $newID = new CustomerControl();
+        
+        try {
+            $sql = "INSERT INTO " . $this->tableName . " (CusID,CusType,CusName,Username,Password,Email,CreditLimit,Status) "
+                     ."VALUES('".$customer->getCusID(). "','" . $customer->getCusType() .
+                "','". $customer->getCusName() . "','" . $customer->getUsername(). "','"
+                .$customer->getPassword() . "','" . $customer->getEmail() . "','".
+                $customer->getCreditLimit() . "','" .$customer->getStatus() . "')";
+            $conn = new PDO("mysql:host=$this->servername;dbname=$this->dbname", $this->username, $this->password);
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $conn->exec($sql);
+            echo "You have registered successfully!";
+        } catch (PDOException $e) {
+            echo $sql . "<br>" . $e->getMessage();
+        }
+        $conn = null;
+    }
+
+     public function retrieveCustomer($username) {
+        echo "<table style='border: solid 1px black;'>";
+        echo "<tr><th>ID</th><th>Type</th><th>Name</th><th>Email</th><th>Username</th><th>Password</th><th>Credit Limit</th><th>Status</th></tr>";
+        try {
+            $conn = new PDO("mysql:host=$this->servername;dbname=$this->dbname", $this->username, $this->password);
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $stmt = $conn->prepare("SELECT * FROM " . $this->tableName . " WHERE Username = '" . $username . "'");
+            $stmt->execute();
+            $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+           
+            foreach (new TableRows(new RecursiveArrayIterator($stmt->fetchAll())) as $k => $v) {
+                echo $v;
+            }
+            
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+        $conn = null;
+        echo "</table>";
+    }
+
+    
+  //----------------------------------//   
     public function verifyCustomer($Username,$Password){
         $sql = "SELECT *FROM " . $this->tableName. "WHERE Username='"
               . $Username . "' AND Password ='" . $Password . "'";

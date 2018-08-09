@@ -1,8 +1,7 @@
 <?php
-// Initialize the session
+
 session_start();
  
-// If session variable is not set it will redirect to login page
 if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
   header("location: Customerlogin.php");
   exit;
@@ -37,8 +36,14 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
     <div class="page-header">
         <h1>Hi, <b ><font color="red"><?php echo htmlspecialchars($_SESSION['username']); ?></font></b>. Welcome to our site.</h1>
         <p><a href="logout.php" class="btn btn-danger">Sign Out of Your Account</a></p>
-        <li class="no-sub"> <a href="UpdateCustomerDetail.php" target="iframe">Update Detail</a></li>
-        <li class="no-sub"> <a href="Invoice.php" target="iframe">invoice</a></li>
+        <table align="center" border="1">
+            
+        <tr>
+            <td><li class="no-sub"><a href="CustomerDetail.php" target="iframe">Profile</a></li></td>
+            <td><li class="no-sub"><a href="UpdateCustomerDetail.php" target="iframe">Maintain</a></li></td>
+            <td><li class="no-sub"> <a href="Invoice.php" target="iframe">invoice</a></li></td>
+        </tr>
+        </table>
     </div>
      <div class="frame" >
                 <iframe frameBorder="0" height="100%" width="100%" src="" name="iframe" scrolling="no"></iframe>

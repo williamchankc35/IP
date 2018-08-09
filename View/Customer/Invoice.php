@@ -5,7 +5,6 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
   header("location: Customerlogin.php");
   exit;
 }
-
 ?>
 
 <h1 align="center"> Invoice </h1>
@@ -16,8 +15,6 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
 			<th>Invoice Date</th>
 			<th>Customer Name</th>
 			<th>Created Date</th>
-			<th>Order ID</th>
-                        <th>Order Date</th>
                         <th>Total Order Amount</th>
                         <th>Total Amount</th>
 		</tr>
@@ -34,18 +31,16 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
 			<td><label><?php echo $row['invID']; ?></label></td>
 			<td><label><?php echo $row['invDate']; ?></label></td>
 			<td><label><?php echo $row['invCustName']; ?></label></td>
-			<td><label><?php echo $row['invCreateDate']; ?></label></td>
-			<td><label><?php echo $row['invOrderID']; ?></label></td>
-                        <td><label><?php echo $row['invOrderDate']; ?></label></td>
+			<td><label><?php echo $row['invCreateDate']; ?></label></td>                                                
                         <td><label><?php echo $row['invTotalOrderAmount']; ?></label></td>
                         <td><label><?php echo $row['invTotalAmount']; ?></label></td>
                         <?php $OrderID = $row['invOrderID']?>
-		</tr>
+		</tr>              
 		<?php } ?>
 	</tbody>
 </table>
 
-<h1 align="center"> Order Detail </h1>
+<h1 align="center"> Order List </h1>
 <table border="1" cellspacing="5" cellpadding="5" width="100%">
 	<thead>
 		<tr>
