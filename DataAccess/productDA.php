@@ -46,13 +46,13 @@ class productDA {
         echo "</table>";
     }
 
-    public function updateProduct(product $product) {
+    public function updateProduct(product $product, $prodID) {
         try {
             $conn = new PDO("mysql:host=$this->servername;dbname=$this->dbname", $this->username, $this->password);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $sql = "UPDATE " . $this->tableName . " SET prodType = '" . $catalog->getProdType() .
-                    "' , prodDesc = '" . $catalog->getProdDesc() . "' , prodAvailable = '" . $catalog->getProdAvailable() .
-                    "' WHERE prodID = '" . $catalog->getProdID() . "'";
+            $sql = "UPDATE " . $this->tableName . " SET prodType = '" . $product->getProdType() .
+                    "' , prodDesc = '" . $product->getProdDesc() . "' , prodAvailable = '" . $product->getProdAvailable() .
+                    "' WHERE prodID = '" . $prodID . "'";
             $stmt = $conn->prepare($sql);
             $stmt->execute();
             echo $stmt->rowCount() . " records UPDATED successfully";

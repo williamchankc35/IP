@@ -10,10 +10,6 @@ and open the template in the editor.
         <title></title>
     </head>
     <body>
-        <?php
-        //include_once dirname(__FILE__) . '/../../DataAccess/productDA.php';
-        include dirname(__FILE__) . '/../../Controller/productControl.php';
-        ?>
         <form action="../../Controller/productControl.php" method="POST">
             <table border="1">
                 <thead>
@@ -26,7 +22,7 @@ and open the template in the editor.
                         <td>Product ID</td>
                         <td>Product ID will be auto generated</td>
                         <td>Product ID</td>
-                        <td><input type="text" name="prodID" value="" /></td>
+                        <td><input type="text" name="prodID" value="" /> Only for Retrieve,Update and Delete</td>
                     </tr>
                     <tr>
                         <td>Product Type</td>
@@ -38,12 +34,11 @@ and open the template in the editor.
                         <td>Product Description</td>
                         <td><textarea name="prodDesc" rows="4" cols="20">--Enter product description here--</textarea></td>
                         <td>Product Description</td>
-                        <td><textarea name="prodDesc1" rows="4" cols="20" readonly="readonly">
-                            </textarea></td>
+                        <td><textarea name="prodDesc1" rows="4" cols="20" readonly="readonly"></textarea></td>
                     </tr>
                     <tr>
                         <td>Product Available?</td>
-                        <td><input type="radio" name="productRB" value="Yes" />Yes<input type="radio" name="product" value="No" />No</td>
+                        <td><input type="radio" name="productRB" value="Yes" />Yes<input type="radio" name="productRB" value="No" />No</td>
                         <td>Product Available?</td>
                         <td><input type="text" name="prodAvailable" value="" readonly="readonly" /></td>
                     </tr>
@@ -66,6 +61,7 @@ and open the template in the editor.
                 </tr>
                 <tr>
                     <?php
+                    include_once dirname(__FILE__) . '/../../DataAccess/productDA.php';
                     $show = new productDA();
                     $show->showAllProduct();
                     ?>
