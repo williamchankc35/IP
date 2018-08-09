@@ -9,24 +9,16 @@ class order {
     private $orderDate;
     private $orderCustID;
     private $orderCustName;
-    private $orderProdID;
-    private $orderProdName;
-    private $orderQuantity;
-    private $orderUnitPrice;
     private $orderPD; //pick up or delivery
     private $orderAddress; //delivery address
     private $orderPDDate;
     private $orderPDTime;
     private $orderTotalAmount;
 
-    function __construct($orderDate, $orderCustID, $orderCustName, $orderProdID, $orderProdName, $orderQuantity, $orderUnitPrice, $orderPD, $orderAddress, $orderPDDate, $orderPDTime, $orderTotalAmount) {
+    function __construct($orderDate, $orderCustID, $orderCustName, $orderPD, $orderAddress, $orderPDDate, $orderPDTime, $orderTotalAmount) {
         $this->orderDate = $orderDate;
         $this->orderCustID = $orderCustID;
         $this->orderCustName = $orderCustName;
-        $this->orderProdID = $orderProdID;
-        $this->orderProdName = $orderProdName;
-        $this->orderQuantity = $orderQuantity;
-        $this->orderUnitPrice = $orderUnitPrice;
         $this->orderPD = $orderPD;
         $this->orderAddress = $orderAddress;
         $this->orderPDDate = $orderPDDate;
@@ -44,22 +36,6 @@ class order {
 
     function getOrderCustName() {
         return $this->orderCustName;
-    }
-
-    function getOrderProdID() {
-        return $this->orderProdID;
-    }
-
-    function getOrderProdName() {
-        return $this->orderProdName;
-    }
-
-    function getOrderQuantity() {
-        return $this->orderQuantity;
-    }
-
-    function getOrderUnitPrice() {
-        return $this->orderUnitPrice;
     }
 
     function getOrderPD() {
@@ -92,22 +68,6 @@ class order {
 
     function setOrderCustName($orderCustName) {
         $this->orderCustName = $orderCustName;
-    }
-
-    function setOrderProdID($orderProdID) {
-        $this->orderProdID = $orderProdID;
-    }
-
-    function setOrderProdName($orderProdName) {
-        $this->orderProdName = $orderProdName;
-    }
-
-    function setOrderQuantity($orderQuantity) {
-        $this->orderQuantity = $orderQuantity;
-    }
-
-    function setOrderUnitPrice($orderUnitPrice) {
-        $this->orderUnitPrice = $orderUnitPrice;
     }
 
     function setOrderPD($orderPD) {

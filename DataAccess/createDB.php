@@ -1,11 +1,5 @@
 <?php
 
-/*
- * @author William
- */
-
-
-
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -19,7 +13,7 @@ try {
     $sql = "CREATE DATABASE $dbname ";
     // use exec() because no results are returned
     $conn->exec($sql);
-    
+
     $conn->exec("CREATE TABLE $dbname.catalog(
         cataID INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
         cataPeriod DATE,
@@ -52,16 +46,20 @@ try {
         orderDate DATE,
         orderCustID INT(6) UNSIGNED,
         orderCustName VARCHAR(50),
-        orderProdID INT(6) UNSIGNED,
-        orderProdName VARCHAR(50),
-        orderQuantity INT(6),
-        orderUnitPrice DOUBLE,
         orderPD VARCHAR(10),
         orderAddress VARCHAR(200),
         orderPDDate DATE,
         orderPDTime TIME,
         orderTotalAmount DOUBLE
         )");
+    $conn->exec("CREATE TABLE $dbname.orderDetail(
+        orderID INT(6),
+        prodID INT(6),
+        itemQty int(6),
+        prodPrice DOUBLE,
+        subTotal DOUBLE
+    )");
+
     $conn->exec("CREATE TABLE $dbname.orderPD(
         orderPDID INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
         orderPDDate DATE,
