@@ -63,14 +63,16 @@ try {
         orderTotalAmount DOUBLE
         )");
     $conn->exec("CREATE TABLE $dbname.orderPD(
-        orderPDID INT(6)UNSIGNED,
+        orderPDID INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+        orderID INT(6) UNSIGNED,
         orderPDDate DATE,
         orderPDTime TIME,
         orderPDStaffID INT(6) UNSIGNED,
-        orderPDStaffNam VARCHAR(50)
+        orderPDStaffName VARCHAR(50)
         )");
     $conn->exec("CREATE TABLE $dbname.payment(
-        paymentOrderInvID VARCHAR(10),
+        paymentID INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+        paymentOrderInvID INT(6) UNSIGNED,
         paymentDateTime DATETIME
         )");
     $conn->exec("CREATE TABLE $dbname.product(
@@ -80,6 +82,7 @@ try {
         prodAvailable VARCHAR(10)
         )");
     $conn->exec("CREATE TABLE $dbname.user(
+        userID INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
         userType VARCHAR(50),
         userName VARCHAR(50),
         userPassword VARCHAR(50),
