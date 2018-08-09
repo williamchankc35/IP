@@ -12,7 +12,8 @@ and open the template in the editor.
     <body>
         <?php
         include_once dirname(__FILE__).'/../../DataAccess/productDA.php';
-        echo showAllProduct();
+        $show = new productDA();
+        $show->showAllProduct();
         ?>
         <table border="1">
             <thead>
