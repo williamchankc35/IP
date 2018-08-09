@@ -13,8 +13,8 @@ class catalogDA {
     private $dbname = "FioreFlowershopDB";
     public function insertCatalog(catalog $catalog) {
         try {
-            $sql = "INSERT INTO " . $this->tableName . " (cataID, cataPeriod, cataPrice, cataDesc) "
-                    . "VALUES ('" . $catalog->getCataID() . "','" . $catalog->getCataPeriod() . "','" . $catalog->getCataPrice() . "','" . $catalog->getCataDesc() . "')";
+            $sql = "INSERT INTO " . $this->tableName . " (cataPeriod, cataPrice, cataDesc) "
+                    . "VALUES ('" . $catalog->getCataPeriod() . "','" . $catalog->getCataPrice() . "','" . $catalog->getCataDesc() . "')";
             
             $conn = new PDO("mysql:host=$this->servername;dbname=$this->dbname", $this->username, $this->password);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
