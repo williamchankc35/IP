@@ -102,5 +102,5 @@ class productDA {
     }    
 }
 
-$testprod = new productDA();
-$testprod->showAllProduct();
+//$testprod = new productDA();
+//$testprod->showAllProduct();
