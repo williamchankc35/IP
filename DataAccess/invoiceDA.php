@@ -13,8 +13,8 @@ class invoiceDA {
     private $dbname = "FioreFlowershopDB";
     public function insertInvoice(invoice $invoice) {
         try {
-            $sql = "INSERT INTO " . $this->tableName . " (invID, invDate, invCustID, invCustName, invCreateDate, invOrderID, invOrderDate, invTotalOrderAmount, invTotalAmount) "
-                    . "VALUES ('" . $invoice->getInvID() . "','" . $invoice->getInvDate() . "','" . $invoice->getInvCustID()
+            $sql = "INSERT INTO " . $this->tableName . " (invDate, invCustID, invCustName, invCreateDate, invOrderID, invOrderDate, invTotalOrderAmount, invTotalAmount) "
+                    . "VALUES ('" . $invoice->getInvDate() . "','" . $invoice->getInvCustID()
                     . "','" . $invoice->getInvCustName() . "','" . $invoice->getInvCreateDate(). "','" . $invoice->getInvOrderID()
                     . "','" . $invoice->getInvOrderDate() . "','" . $invoice->getInvTotalOrderAmount(). "','" . $invoice->getInvTotalAmount() . "')";
             $conn = new PDO("mysql:host=$this->servername;dbname=$this->dbname", $this->username, $this->password);
