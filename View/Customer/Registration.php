@@ -37,12 +37,6 @@ if(!isset($error_message)) {
 	}
 }
 
-/* Validation to check if gender is selected */
-if(!isset($error_message)) {
-if(!isset($_POST["CusType"])) {
-$error_message = " All Fields are required";
-}
-}
 
 /* Validation to check if Terms and Conditions are accepted */
 if(!isset($error_message)) {
@@ -56,7 +50,9 @@ if(!isset($error_message)) {
     $mysql_user = "root";
     $mysql_password = "";
     $mysql_database = "fioreflowershopdb";
+    
     $Customer = new CustomerControl();
+    
     $dbh = new PDO("mysql:dbname={$mysql_database};host={$mysql_hostname};port=3306", $mysql_user, $mysql_password);
     $CusID = $Customer->getNewID();
     $CusType = $_POST["CusType"];

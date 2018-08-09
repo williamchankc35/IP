@@ -49,7 +49,7 @@ class CustomerDA {
         }        
     }
     
-    public function UpdateRecord(Customer $Customer){
+   public function UpdateRecord(Customer $Customer){
        $sql ="UPDATE " . $this->tableName . " SET CusType='" . $Customer->getCusType() .
             "',CusName='" .$Customer->getCusName() . "',Username='".$Customer->getUsername() .
             "',Password='" .$Customer->getPassword() . "',Email='" .$Customer->getEmail() .
@@ -63,7 +63,7 @@ class CustomerDA {
             return false;
         }
     } 
-
+    
     public function retrieveAll() {
         $sql = "SELECT * FROM " . $this->tableName;
         $conn = new LoiginDBSetting();

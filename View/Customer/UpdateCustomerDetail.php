@@ -6,7 +6,7 @@ session_start();
 if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
   header("location: Customerlogin.php");
   exit;
-
+}
 include_once '../../Controller/CustomerControl.php';
 include_once '../../Class/Customer.php';
 include_once '../../DataAccess/LoiginDBSetting.php';
@@ -44,35 +44,37 @@ if(!isset($error_message)) {
 	}
 }
 
-/* Validation to check if gender is selected */
+
 if(!isset($error_message)) {
-if(!isset($_POST["CusType"])) {
-$error_message = " All Fields are required";
-}
-}
-if(!isset($error_message)) {
- try{
-    $pdo = new config();
-     $pdo = new PDO("mysql:host=localhost;dbname=fioreflowershopdb", "root", "");
-    // Set the PDO error mode to exception
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch(PDOException $e){
-    die("ERROR: Could not connect. " . $e->getMessage());
-}
-try{
-   
-    $sql = "UPDATE customer SET CusType ='".$_POST["CusType"]."',CusName='" .$_POST["CusName"].
-            "',Email='".$_POST["Email"]."'WHERE Username='" . $_SESSION['username']. "'";   
-    $pdo->exec($sql);
-    echo "Records were updated successfully.";
-    unset($_POST);
-} catch(PDOException $e){
-    die("ERROR: Could not able to execute $sql. " . $e->getMessage());
+      $mysql_hostname = "localhost";
+    $mysql_user = "root";
+    $mysql_password = "";
+    $mysql_database = "fioreflowershopdb";
+    $pdo = new PDO("mysql:dbname={$mysql_database};host={$mysql_hostname};port=3306", $mysql_user, $mysql_password);
+    $sql = "UPDATE customer SET   CusType = :cusType,             
+            CusName = :cusname,
+            Email= :email,
+            CreditLimit = :creditlimit,
+            Status = :status
+            WHERE Username = '".$_SESSION['username']."'";
+$stmt = $pdo->prepare($sql);                                  
+$stmt->bindParam(':cusname', $_POST['CusName'], PDO::PARAM_STR);       
+$stmt->bindParam(':cusType', $_POST['CusType'], PDO::PARAM_STR);    
+$stmt->bindParam(':email', $_POST['Email'], PDO::PARAM_STR);
+$stmt->bindParam(':creditlimit', $Preset1, PDO::PARAM_STR);    
+$stmt->bindParam(':status', $Preset2, PDO::PARAM_STR);
+// use PARAM_STR although a number    
+if ($stmt->execute()){ 
+ $error_message = "";
+ $success_message = "Update successfully!";	
+unset($_POST);}
+else {
+$error_message = "Problem in update. Try Again!";
 }
 
 }
 }
-}
+
 // Close connection
 unset($pdo);
 ?>
