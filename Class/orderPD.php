@@ -7,22 +7,16 @@
 
 class orderPD {
     
-    private $orderPDID;
     private $orderPDDate;
     private $orderPDTime;
     private $orderPDStaffID;
     private $orderPDStaffName;
     
-    function __construct($orderPDID, $orderPDDate, $orderPDTime, $orderPDStaffID, $orderPDStaffName) {
-        $this->orderPDID = $orderPDID;
+    function __construct($orderPDDate, $orderPDTime, $orderPDStaffID, $orderPDStaffName) {
         $this->orderPDDate = $orderPDDate;
         $this->orderPDTime = $orderPDTime;
         $this->orderPDStaffID = $orderPDStaffID;
         $this->orderPDStaffName = $orderPDStaffName;
-    }
-
-    function getOrderPDID() {
-        return $this->orderPDID;
     }
 
     function getOrderPDDate() {
@@ -41,9 +35,6 @@ class orderPD {
         return $this->orderPDStaffName;
     }
 
-    function setOrderPDID($orderPDID) {
-        $this->orderPDID = $orderPDID;
-    }
 
     function setOrderPDDate($orderPDDate) {
         $this->orderPDDate = $orderPDDate;
