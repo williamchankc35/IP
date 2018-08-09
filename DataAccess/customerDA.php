@@ -2,7 +2,7 @@
 
 include_once 'connectDB.php';
 include_once 'TableRows.php';
-include_once '/Class/customer.php';
+include_once dirname(__FILE__).'/../Class/customer.php';
 
 class customerDA {
     

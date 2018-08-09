@@ -2,7 +2,7 @@
 
 include_once 'connectDB.php';
 include_once 'TableRows.php';
-include_once '/Class/orderPD.php';
+include_once dirname(__FILE__).'/../Class/orderPD.php';
 
 class orderPDDA {
     

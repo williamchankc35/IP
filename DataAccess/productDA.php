@@ -1,12 +1,27 @@
 <?php
 
-include_once 'connectDB.php';
+//include_once 'connectDB.php';
 include_once 'TableRows.php';
-include_once '/Class/product.php';
+include_once dirname(__FILE__).'/../Class/product.php';
 
 class productDA {
     
     private $tableName = "product";
+    private $servername = "localhost";
+    private $username = "root";
+    private $password = "";
+    private $dbname = "FioreFlowershopDB";
+    
+    public function getConn() {
+        try {
+            $conn = new PDO("mysql:host=$this->servername;dbname=$this->dbname", $this->username, $this->password);
+            // set the PDO error mode to exception
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            echo "Connected successfully";
+        } catch (PDOException $e) {
+            echo "Connection failed: " . $e->getMessage();
+        }
+    }
 
     public function insertProduct(product $product) {
         try {
@@ -71,7 +86,8 @@ class productDA {
         echo "<table style='border: solid 1px black;'>";
         echo "<tr><th>ID</th><th>Type</th><th>Description</th><th>Available?</th></tr>";
         try {
-            $conn = new connectDB();
+            $conn = new PDO("mysql:host=$this->servername;dbname=$this->dbname", $this->username, $this->password);
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $stmt = $conn->prepare("SELECT * FROM " . $this->tableName);
             $stmt->execute();
             $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
@@ -83,5 +99,8 @@ class productDA {
         }
         $conn = null;
         echo "</table>";
-    }
+    }    
 }
+
+$testprod = new productDA();
+$testprod->showAllProduct();

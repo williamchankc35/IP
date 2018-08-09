@@ -23,3 +23,6 @@ class connectDB {
     }
 
 }
+
+//$testdb = new connectDB();
+//$testdb->getConn();
