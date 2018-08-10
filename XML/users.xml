@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="users.xsl"?>
+<!--
+@author William
+-->
+
+<!DOCTYPE users SYSTEM 'users.dtd'>
+
+<users>
+    <user userID="1">
+        <userType>admin</userType>
+        <userName>admin1</userName>
+        <userPassword>admin1</userPassword>
+        <userStatus>admin</userStatus>
+    </user>
+    <user userID="2">
+        <userType>admin</userType>
+        <userName>admin2</userName>
+        <userPassword>admin2</userPassword>
+        <userStatus>admin</userStatus>
+    </user>
+    <user userID="3">
+        <userType>staff</userType>
+        <userName>staff1</userName>
+        <userPassword>staff1</userPassword>
+        <userStatus>staff</userStatus>
+    </user>
+    <user userID="4">
+        <userType>staff</userType>
+        <userName>staff2</userName>
+        <userPassword>staff2</userPassword>
+        <userStatus>staff</userStatus>
+    </user>
+    <user userID="5">
+        <userType>customer</userType>
+        <userName>customer1</userName>
+        <userPassword>customer1</userPassword>
+        <userStatus>consumer</userStatus>
+    </user>
+    <user userID="6">
+        <userType>customer</userType>
+        <userName>customer2</userName>
+        <userPassword>customer2</userPassword>
+        <userStatus>corporate</userStatus>
+    </user>
+    <user userID="7">
+        <userType>customer</userType>
+        <userName>customer3</userName>
+        <userPassword>customer3</userPassword>
+        <userStatus>consumer</userStatus>
+    </user>
+    <user userID="8">
+        <userType>customer</userType>
+        <userName>customer4</userName>
+        <userPassword>customer4</userPassword>
+        <userStatus>corporate</userStatus>
+    </user>
+    <user userID="9">
+        <userType>customer</userType>
+        <userName>customer5</userName>
+        <userPassword>customer5</userPassword>
+        <userStatus>consumer</userStatus>
+    </user>
+    <user userID="10">
+        <userType>customer</userType>
+        <userName>customer6</userName>
+        <userPassword>customer6</userPassword>
+        <userStatus>corporate</userStatus>
+    </user>
+</users>

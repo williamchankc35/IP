@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+@author William
+-->
+
+<!ELEMENT orderPDs (orderPD+)>
+
+<!ELEMENT orderPD (orderPDtype, orderID, orderPDDate, orderPDTime, orderPDStaffID, orderPDStaffName)>
+<!ELEMENT orderPDtype (#PCDATA)>
+<!ELEMENT orderID (#PCDATA)>
+<!ELEMENT orderPDDate (#PCDATA)>
+<!ELEMENT orderPDTime (#PCDATA)>
+<!ELEMENT orderPDStaffID (#PCDATA)>
+<!ELEMENT orderPDStaffName (#PCDATA)>
