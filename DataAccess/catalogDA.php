@@ -48,7 +48,6 @@ class catalogDA {
 
     public function updateCatalog(catalog $catalog) {
         try {
-            
             $conn = new PDO("mysql:host=$this->servername;dbname=$this->dbname", $this->username, $this->password);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $sql = "UPDATE " . $this->tableName . " SET cataPeriod = '" . $catalog->getCataPeriod() .
