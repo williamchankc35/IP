@@ -11,6 +11,28 @@ class invoiceDA {
     private $username = "root";
     private $password = "";
     private $dbname = "FioreFlowershopDB";
+    
+    
+    public function OrderReport($username, $time1, $time2) {
+        echo "<table style='border: solid 1px black;'>";
+        echo "<tr><th>Invoice from $time1 to $timep2</th></tr>";
+        echo "<tr><th>Order ID</th><th>Date</th><th>Customer ID</th><th>Customer Name</th><th>P/D</th><th>Address</th><th>P/D Time</th><th>P/D Time</th>orderTotalAmount</tr>";
+        try {
+            $conn = new PDO("mysql:host=$this->servername;dbname=$this->dbname", $this->username, $this->password);
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $stmt = $conn->prepare("SELECT * FROM " . $this->tableName . " WHERE orderPDDate BETWEEN '" . $time1 . "' AND '" . $time2 . "' AND orderCustName = '".$username."'");
+            $stmt->execute();
+            $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            foreach (new TableRows(new RecursiveArrayIterator($stmt->fetchAll())) as $k => $v) {
+                echo $v;
+            }
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+        $conn = null;
+        echo "</table>";
+    }
+    
     public function insertInvoice(invoice $invoice) {
         try {
             $sql = "INSERT INTO " . $this->tableName . " (invDate, invCustID, invCustName, invCreateDate, invOrderID, invOrderDate, invTotalOrderAmount, invTotalAmount) "
