@@ -24,6 +24,7 @@
                 </div>
                 <div style="clear:both"></div>  
                 <br />  
+                <?php if(isset($_SESSION)&&isset($_SESSION['ordDet'])){?>
                 <h3>Order Details</h3>  
                 <div class="table-responsive">  
                      <table border="1">  
@@ -52,6 +53,7 @@
                  
                      </table>  
                 </div>  
+                <?php } else echo "test"?>
            </div>  
            <br />  
       </body>  

@@ -18,8 +18,8 @@ if (isset($_POST["add_to_cart"])) {
     $qty = $_POST["quantity"];
     $orderDA->addOrderDetSession($prodid, $qty);
     $order = $orderDA->retrieveOrderData("2");
-
-    echo $order->toString();
+    $_SESSION['ordDet'][]= $order;
+    
 }
 
 class OrderControl {
