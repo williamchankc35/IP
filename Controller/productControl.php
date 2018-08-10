@@ -7,7 +7,8 @@ if (isset($_POST['CProd'])) {
     $prodType = $_POST["prodType"];
     $prodDesc = $_POST["prodDesc"];
     $prodAvailable = $_POST["productRB"];
-    $product = new product($prodType, $prodDesc, $prodAvailable);
+    $prodPrice = $_POST["prodPrice"];
+    $product = new product($prodType, $prodDesc, $prodAvailable, $prodPrice);
     $prodDA->insertProduct($product);
 }
 if (isset($_POST['RProd'])) {
@@ -19,7 +20,8 @@ if (isset($_POST['UProd'])) {
     $prodType = $_POST["prodType"];
     $prodDesc = $_POST["prodDesc"];
     $prodAvailable = $_POST["productRB"];
-    $product = new product($prodType, $prodDesc, $prodAvailable);
+    $prodPrice = $_POST["productPrice"];
+    $product = new product($prodType, $prodDesc, $prodAvailable, $prodPrice);
     $prodDA->updateProduct($product, $prodID);
 }
 if (isset($_POST['DProd'])) {

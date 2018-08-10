@@ -15,8 +15,8 @@ class productDA {
 
     public function insertProduct(product $product) {
         try {
-            $sql = "INSERT INTO " . $this->tableName . " (prodType, prodDesc, prodAvailable) "
-                    . "VALUES ('" . $product->getProdType() . "','" . $product->getProdDesc() . "','" . $product->getProdAvailable() . "')";
+            $sql = "INSERT INTO " . $this->tableName . " (prodType, prodDesc, prodAvailable, prodPrice) "
+                    . "VALUES ('" . $product->getProdType() . "','" . $product->getProdDesc() . "','" . $product->getProdAvailable() . "','" . $product->getProdPrice() . "')";
             $conn = new PDO("mysql:host=$this->servername;dbname=$this->dbname", $this->username, $this->password);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $conn->exec($sql);
@@ -51,7 +51,7 @@ class productDA {
             $conn = new PDO("mysql:host=$this->servername;dbname=$this->dbname", $this->username, $this->password);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $sql = "UPDATE " . $this->tableName . " SET prodType = '" . $product->getProdType() .
-                    "' , prodDesc = '" . $product->getProdDesc() . "' , prodAvailable = '" . $product->getProdAvailable() .
+                    "' , prodDesc = '" . $product->getProdDesc() . "' , prodAvailable = '" . $product->getProdAvailable() . $product->getProdPrice() .
                     "' WHERE prodID = '" . $prodID . "'";
             $stmt = $conn->prepare($sql);
             $stmt->execute();
@@ -93,7 +93,22 @@ class productDA {
         }
         $conn = null;
         echo "</table>";
-    }    
+    }
+    
+    public function retrieveProductData($prodID) {
+        try {
+            $conn = new PDO("mysql:host=$this->servername;dbname=$this->dbname", $this->username, $this->password);
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $stmt = $conn->prepare("SELECT prodType, prodDesc, prodAvailable, prodPrice FROM `" . $this->tableName . "` WHERE prodID='" . $prodID . "'");
+            $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            $product = new product($result['prodType'], $result['prodDesc'], $result['prodAvailable'], $result['prodPrice']);
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+            $product = null;
+        }
+        return $product;
+    }
 }
 
 //$testprod = new productDA();

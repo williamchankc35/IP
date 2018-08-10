@@ -18,6 +18,7 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
      
  body{ 
      font: 14px sans-serif; text-align: center; 
+     background-color: lightcyan;
  }
         
 .li.no-sub  {
@@ -28,6 +29,7 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
     height: 81vh;
     width: 1300px;
     display: inline-block;
+    background-color: lightgrey;
 }
 
     </style>
