@@ -14,8 +14,8 @@ class orderPDDA {
     
     public function insertOrderPD(orderPD $orderPD) {
         try {
-            $sql = "INSERT INTO " . $this->tableName . " (orderPDDate, orderPDTime, orderPDStaffID, orderPDStaffName) "
-                    . "VALUES ('" . $orderPD->getOrderPDDate() 
+            $sql = "INSERT INTO " . $this->tableName . " (orderID, orderPDDate, orderPDTime, orderPDStaffID, orderPDStaffName) "
+                    . "VALUES ('" . $orderPD->getOrderID() . "','" . $orderPD->getOrderPDDate() 
                     . "','" . $orderPD->getOrderPDTime() . "','" . $orderPD->getOrderPDStaffID() . "','" . $orderPD->getOrderPDStaffName() . "')";
             $conn = new PDO("mysql:host=$this->servername;dbname=$this->dbname", $this->username, $this->password);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -29,7 +29,7 @@ class orderPDDA {
 
     public function retrieveOrderPD($orderPDID) {
         echo "<table style='border: solid 1px black;'>";
-        echo "<tr><th>ID</th><th>Date</th><th>Time</th><th>Staff ID</th><th>Staff Name</th></tr>";
+        echo "<tr><th>OrderPD ID</th><th>Order ID</th><th>Date</th><th>Time</th><th>Staff ID</th><th>Staff Name</th></tr>";
         try {
             $conn = new PDO("mysql:host=$this->servername;dbname=$this->dbname", $this->username, $this->password);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -46,14 +46,17 @@ class orderPDDA {
         echo "</table>";
     }
 
-    public function updateOrderPD(orderPD $orderPD) {
+    public function updateOrderPD(orderPD $orderPD, $orderPDID) {
         try {
             $conn = new PDO("mysql:host=$this->servername;dbname=$this->dbname", $this->username, $this->password);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $sql = "UPDATE " . $this->tableName . " SET orderPDDate = '" . $catalog->getOrderPDDate() .
-                    "' , orderPDTime = '" . $catalog->getOrderPDTime() . "' , orderPDStaffID = '" . $catalog->getOrderPDStaffID() . 
-                    "' , orderPDStaffName = '" . $catalog->getOrderPDStaffName() .
-                    "' WHERE orderPDID = '" . $catalog->getOrderPDID() . "'";
+            $sql = "UPDATE " . $this->tableName . 
+                    " SET orderID = '" . $orderPD->getOrderID() . 
+                    "' , orderPDDate = '" . $orderPD->getOrderPDDate() .
+                    "' , orderPDTime = '" . $orderPD->getOrderPDTime() . 
+                    "' , orderPDStaffID = '" . $orderPD->getOrderPDStaffID() . 
+                    "' , orderPDStaffName = '" . $orderPD->getOrderPDStaffName() .
+                    "' WHERE orderPDID = '" . $orderPDID . "'";
             $stmt = $conn->prepare($sql);
             $stmt->execute();
             echo $stmt->rowCount() . " records UPDATED successfully";
@@ -79,7 +82,7 @@ class orderPDDA {
 
     public function showAllOrderPD() {
         echo "<table style='border: solid 1px black;'>";
-        echo "<tr><th>ID</th><th>Date</th><th>Time</th><th>Staff ID</th><th>Staff Name</th></tr>";
+        echo "<tr><th>OrderPD ID</th><th>ID</th><th>Date</th><th>Time</th><th>Staff ID</th><th>Staff Name</th></tr>";
         try {
             $conn = new PDO("mysql:host=$this->servername;dbname=$this->dbname", $this->username, $this->password);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
