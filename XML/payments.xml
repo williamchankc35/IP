@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="payments.xsl"?>
+<!--
+@author William
+-->
+
+<!DOCTYPE payments SYSTEM 'payments.dtd'>
+
+<payments>
+    <payment paymentID="1">
+        <paymentOrderInvID>1</paymentOrderInvID>
+        <paymentDateTime>2018-08-07 09:30:00</paymentDateTime>
+    </payment>
+    <payment paymentID="2">
+        <paymentOrderInvID>2</paymentOrderInvID>
+        <paymentDateTime>2018-08-07 12:07:00</paymentDateTime>
+    </payment>
+    <payment paymentID="3">
+        <paymentOrderInvID>3</paymentOrderInvID>
+        <paymentDateTime>2018-08-08 09:00:00</paymentDateTime>
+    </payment>
+    <payment paymentID="4">
+        <paymentOrderInvID>4</paymentOrderInvID>
+        <paymentDateTime>2018-08-08 08:00:00</paymentDateTime>
+    </payment>
+    <payment paymentID="5">
+        <paymentOrderInvID>5</paymentOrderInvID>
+        <paymentDateTime>2018-08-09 15:30:00</paymentDateTime>
+    </payment>
+    <payment paymentID="6">
+        <paymentOrderInvID>6</paymentOrderInvID>
+        <paymentDateTime>2018-08-09 10:30:00</paymentDateTime>
+    </payment>
+</payments>

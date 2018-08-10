@@ -4,7 +4,7 @@
 include_once 'TableRows.php';
 include_once dirname(__FILE__) . '/../Class/payment.php';
 
-class customerDA {
+class paymentDA {
 
     private $tableName = "payment";
     private $servername = "localhost";

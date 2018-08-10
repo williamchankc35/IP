@@ -62,6 +62,7 @@ try {
 
     $conn->exec("CREATE TABLE $dbname.orderPD(
         orderPDID INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+        orderPDType VARCHAR(20),
         orderID INT(6) UNSIGNED,
         orderPDDate DATE,
         orderPDTime TIME,
