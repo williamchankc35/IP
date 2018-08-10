@@ -5,9 +5,11 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
   header("location: Customerlogin.php");
   exit;
 }
+
 ?>
 
-<h1 align="center"> Order List </h1>
+
+<h1 align="center"> Invoice </h1>
 <table border="1" cellspacing="5" cellpadding="5" width="100%">
 	<thead>
 		<tr>
@@ -33,7 +35,7 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
 		for($i=0; $row2 = $result2->fetch(); $i++){
 	?>
 		<tr>
-			<td><label><?php echo $row2['orderID']; ?></label></td>
+			<td><label><?php echo $row2['orderID'];  $oID=$row2['orderID'];?></label></td>
 			<td><label><?php echo $row2['orderDate']; ?></label></td>		
 			<td><label><?php echo $row2['orderCustID']; ?></label></td>
                         <td><label><?php echo $row2['orderCustName']; ?></label></td>
@@ -42,55 +44,23 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
                         <td><label><?php echo $row2['orderPDDate']; ?></label></td>
                         <td><label><?php echo $row2['orderPDTime']; ?></label></td>
                         <td><label><?php echo $row2['orderTotalAmount']; ?></label></td>
-                        
+                                   <?php  $Total =+ $row2['orderTotalAmount']   ?>
+                                    
+              
 		</tr>
-                </tbody>
+              
 </table>
-                <h1 align="center"> Product Lit </h1>
-<table border="1" cellspacing="5" cellpadding="5" width="100%">
-	<thead>
-		<tr>
-			<th>Order ID</th>
-			<th>Product ID</th>
-			<th>Product Type</th>
-			<th>Product Description</th>
-			<th>Item Qty</th>
-                        <th>Product Price</th>
-                        <th>Sub Total</th>                      
-		</tr>
-	</thead>
-	<tbody>
-	<?php
-
-		require_once('../../DataAccess/config.php');
-		$result3 = $pdo->prepare("SELECT * "
-                        . "FROM `".orderdetail ."` WHERE orderDate '" . $row2['orderID']."'");
-		$result3->execute();
-		for($i=0; $row3 = $result3->fetch(); $j++){
-	?>
-            <?php
-
-		require_once('../../DataAccess/config.php');
-		$result4 = $pdo->prepare("SELECT * "
-                        . "FROM `".product."` WHERE orderDate '" . $row3['ProdID']."'");
-		$result4->execute();
-		for($i=0; $row4 = $result4->fetch(); $k++){
-	?>
-            <tr>
-			<td><label><?php echo $row3['orderID']; ?></label></td>
-			<td><label><?php echo $row3['ProdID']; ?></label></td>
-                        <td><label><?php echo $row4['ProdType']; ?></label></td>
-                         <td><label><?php echo $row4['ProdDesc']; ?></label></td>	
-			<td><label><?php echo $row3['itemQty']; ?></label></td>
-                        <td><label><?php echo $row3['prodPrice']; ?></label></td>
-                        <td><label><?php echo $row3['subTotal']; ?></label></td>                       
-                        
-		</tr>
-		<?php } ?>
-                    <?php } ?>
-	</tbody>
-</table>               
-		<?php } ?>
+  <h3 align="right"><?php   echo "Total Amount($time1 to $time2) : $Total" ;}  ?></h3>
+  <form name="frmRegistration" method="post" action="CheckInvoiceOrderDetail.php">
+                <td>Search Order Detail</td>
+                <td><input type="text" name="oid" required pattern="[1-9999]" Title="Please enter number between 1-9999"> </td>
+                <td><input type="submit" value="search" name="search" /></td>
+               
+                </form>
+                </tbody>
+                          
+             
+		
 
 	
 
