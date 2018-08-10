@@ -177,9 +177,7 @@ class orderDA {
         try {
             $conn = new PDO("mysql:host=$this->servername;dbname=$this->dbname", $this->username, $this->password);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            
-            echo "You are here <br />";
-            $stmt = $conn->prepare("SELECT * FROM ". $this->tableName);
+            $stmt = $conn->prepare("SELECT max(orderid) as lastid FROM `". $this->tableName."`");
             $stmt->execute();
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
             $lastOrderID=$result['lastid'];
