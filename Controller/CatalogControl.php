@@ -29,3 +29,9 @@ if (isset($_POST['DCatalog'])) {
     $cataID = $_POST["cataID"];
     $da->deleteCatalog($cataID);
 }
+?>
+<html>
+    <form action="../View/Staff/manageCatalog.php">
+        <input type="submit" value="Back" name="Back" />
+    </form>
+</html>

@@ -42,7 +42,7 @@ class orderDA {
             $stmt = $conn->prepare("SELECT MAX(orderid) FROM " . $this->tableName);
             $stmt->execute();
             $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
-            $lastid= $stmt->fetch();
+            $lastid = $stmt->fetch();
             $sql = "INSERT INTO orderdetail" .
                     "(orderid, prodid, itemqty, prodprice, subtotal) "
                     . "VALUES('" . $order->getOrderDate() . "','"
@@ -77,9 +77,9 @@ class orderDA {
             echo "Error: " . $e->getMessage();
         }
         $conn = null;
-        
     }
-    public function retrieveOrderDetail($orderID){
+
+    public function retrieveOrderDetail($orderID) {
         echo "</table><br/>";
         echo "<table style='border: solid 1px black;'>";
         echo "<tr><th>Product ID</th><th>Item Quantity</th>"
@@ -167,6 +167,41 @@ class orderDA {
         }
         $conn = null;
         echo "</table>";
+    }
+
+    public function retrieveOrderData($orderid) {
+        try {
+            $conn = new PDO("mysql:host=$this->servername;dbname=$this->dbname", $this->username, $this->password);
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $stmt = $conn->prepare("SELECT orderdate, ordercustid, ordercustname, orderpd, orderaddress, orderpddate, "
+                    . "orderpdtime, ordertotalamount FROM `" . $this->tableName . "` WHERE orderid='" . $orderid . "'");
+            $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            $order = new order($result['orderdate'], $result['ordercustid'], $result['ordercustname'], $result['orderpd'], $result['orderaddress']
+                    , $result['orderpddate'], $result['orderpdtime'], $result['ordertotalamount']);
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+            $order = null;
+        }
+        return $order;
+    }
+
+    public function addOrderDetSession($prodid, $qty) {
+        try {
+            $conn = new PDO("mysql:host=$this->servername;dbname=$this->dbname", $this->username, $this->password);
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $stmt = $conn->prepare("SELECT max(orderid) as lastid FROM `" . $this->tableName . "`");
+            $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            $lastOrderID = $result['lastid'];
+            echo $lastOrderID;
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
+
+    public function showOrderDetail() {
+        
     }
 
 }

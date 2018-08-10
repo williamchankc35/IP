@@ -15,7 +15,8 @@ class order {
     private $orderPDTime;
     private $orderTotalAmount;
 
-    function __construct($orderDate, $orderCustID, $orderCustName, $orderPD, $orderAddress, $orderPDDate, $orderPDTime, $orderTotalAmount) {
+    function __construct($orderDate, $orderCustID, $orderCustName, $orderPD,
+            $orderAddress, $orderPDDate, $orderPDTime, $orderTotalAmount) {
         $this->orderDate = $orderDate;
         $this->orderCustID = $orderCustID;
         $this->orderCustName = $orderCustName;
@@ -90,4 +91,9 @@ class order {
         $this->orderTotalAmount = $orderTotalAmount;
     }
 
+    function toString(){
+        return    $this->orderDate." ".$this->orderCustID." ".$this->orderCustName." ".
+                $this->orderPD." ".$this->orderAddress." ".$this->orderPDDate." ".
+                $this->orderPDTime." ".$this->orderTotalAmount;
+    }
 }
