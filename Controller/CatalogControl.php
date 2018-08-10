@@ -7,7 +7,8 @@
     $cataPeriod = $_POST["cataPeriod"];
     $cataPrice = $_POST["cataPrice"];
     $cataDesc = $_POST["cataDesc"];
-    $catalog = new catalog($cataPeriod, $cataPrice, $cataDesc);
+    $cataCategory = $_POST["cataCategory"];
+    $catalog = new catalog($cataPeriod, $cataPrice, $cataDesc, $cataCategory);
     $da->insertCatalog($catalog);
 }
 
@@ -20,7 +21,8 @@ if (isset($_POST['RCatalog'])) {
     $cataPeriod = $_POST["cataPeriod"];
     $cataPrice = $_POST["cataPrice"];
     $cataDesc = $_POST["cataDesc"];
-    $catalog = new catalog($cataPeriod, $cataPrice, $cataDesc);
+    $cataCategory = $_POST["cataCategory"];
+    $catalog = new catalog($cataPeriod, $cataPrice, $cataDesc, $cataCategory);
     $da->updateCatalog($catalog);
 }
 
@@ -29,9 +31,14 @@ if (isset($_POST['DCatalog'])) {
     $cataID = $_POST["cataID"];
     $da->deleteCatalog($cataID);
 }
+
+if (isset($_POST['SCatalog'])){
+    $cataName = $_POST["prodCategory"];
+    $da->retrieveProductbyCatalog($cataName);
+}
 ?>
 <html>
-    <form action="../View/Staff/manageCatalog.php">
+    <form action="../View/Customer/CustomerCatalog.php">
         <input type="submit" value="Back" name="Back" />
     </form>
 </html>

@@ -22,37 +22,34 @@ and open the template in the editor.
                         <td>OrderPD ID</td>
                         <td>OrderPD ID will be auto generated</td>
                         <td>OrderPD ID</td>
-                        <td><input type="text" name="orderPDID" value="" /> Only for Retrieve,Update and Delete</td>
+                        <td><input type="text" name="orderPDID" value="" /> For Retrieve,Update and Delete only </td>
+                    </tr>
+                    <tr>
+                        <td>Type</td>
+                        <td>
+                            <input type="radio" name="orderPDType" value="pickup" />Pickup
+                            <input type="radio" name="orderPDType" value="delivery" />Delivery
+                        </td>
                     </tr>
                     <tr>
                         <td>Order ID</td>
                         <td><input type="text" name="orderID" value="" /></td>
-                        <td>Order ID</td>
-                        <td><input type="text" name="orderID1" value="" readonly="readonly" /></td>
                     </tr>
                     <tr>
                         <td>Pickup & Delivery Date</td>
                         <td><input type="date" name="orderPDDate"></td>
-                        <td>Pickup & Delivery Date</td>
-                        <td><input type="text" name="orderPDDate1" value="" readonly="readonly" /></td>
                     </tr>
                     <tr>
                         <td>Pickup & Delivery Time</td>
                         <td><input type="time" name="orderPDTime"></td>
-                        <td>Pickup & Delivery Time</td>
-                        <td><input type="text" name="orderPDTime1" value="" readonly="readonly" /></td>
                     </tr>
                     <tr>
                         <td>Staff ID</td>
                         <td><input type="text" name="orderPDStaffID" value="" /></td>
-                        <td>Staff ID</td>
-                        <td><input type="text" name="orderPDStaffID1" value="" readonly="readonly" /></td>
                     </tr>
                     <tr>
                         <td>Staff Name</td>
                         <td><input type="text" name="orderPDStaffName" value="" /></td>
-                        <td>Staff Name</td>
-                        <td><input type="text" name="orderPDStaffName1" value="" readonly="readonly" /></td>
                     </tr>
                     <tr>
                         <td>
@@ -70,6 +67,41 @@ and open the template in the editor.
             </table>
             <br/>
             <table border="1">
+                <thead>
+                    <tr>
+                        <th>Report Panel</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Daily order report on</td>
+                        <td><input type="date" name="dailyOrder"></td>
+                        <td><input type="submit" value="Generate" name="generate1" /></td>
+                    </tr>
+                    <tr>
+                        <td>Daily pickup report on</td>
+                        <td><input type="date" name="dailyPickup"></td>
+                        <td><input type="submit" value="Generate" name="generate2" /></td>
+                    </tr>
+                    <tr>
+                        <td>Pickup report from</td>
+                        <td><input type="date" name="dailyPickup1"> to <input type="date" name="dailyPickup2"></td>
+                        <td><input type="submit" value="Generate" name="generate3" /></td>
+                    </tr>
+                    <tr>
+                        <td>Daily delivery report on</td>
+                        <td><input type="date" name="dailyDelivery"></td>
+                        <td><input type="submit" value="Generate" name="generate4" /></td>
+                    </tr>
+                    <tr>
+                        <td>Delivery report from</td>
+                        <td><input type="date" name="dailyDelivery1"> to <input type="date" name="dailyDelivery2"></td>
+                        <td><input type="submit" value="Generate" name="generate5" /></td>
+                    </tr>
+                </tbody>
+            </table>
+            <br/>
+            <table border="1">
                 <tr>
                     <th>Order Pickup and Delivery List</th>
                 </tr>
@@ -81,10 +113,6 @@ and open the template in the editor.
                     ?>
                 </tr>
             </table>
-
         </form>
-        <?php
-        // put your code here
-        ?>
     </body>
 </html>

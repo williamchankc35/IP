@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!ELEMENT CustomerTable (CustomerRow+)>
+
+<!ELEMENT CustomerRow(CusID, CusType, CusName,Username, Password, Email,CreditLimit,Status)>
+<!ELEMENT CusID (#PCDATA)>
+<!ELEMENT CusType (#PCDATA)>
+<!ELEMENT CusName (#PCDATA)>
+<!ELEMENT Username (#PCDATA)>
+<!ELEMENT Password (#PCDATA)>
+<!ELEMENT Email (#PCDATA)>
+<!ELEMENT CreditLimit (#PCDATA)>
+<!ELEMENT Status (#PCDATA)>

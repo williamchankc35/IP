@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="orderPDs.xsl"?>
+<!--
+@author William
+-->
+
+<!DOCTYPE orderPDs SYSTEM 'orderPDs.dtd'>
+
+<orderPDs>
+    <orderPD orderPDID="1">
+        <orderPDtype>pickup</orderPDtype>
+        <orderID>1</orderID>
+        <orderPDDate>2018-08-07</orderPDDate>
+        <orderPDTime>09:10:20</orderPDTime>
+        <orderPDStaffID>3</orderPDStaffID>
+        <orderPDStaffName>staff1</orderPDStaffName>
+    </orderPD>
+    <orderPD orderPDID="2">
+        <orderPDtype>pickup</orderPDtype>
+        <orderID>2</orderID>
+        <orderPDDate>2018-08-07</orderPDDate>
+        <orderPDTime>15:49:00</orderPDTime>
+        <orderPDStaffID>4</orderPDStaffID>
+        <orderPDStaffName>staff2</orderPDStaffName>
+    </orderPD>
+    <orderPD orderPDID="3">
+        <orderPDtype>pickup</orderPDtype>
+        <orderID>3</orderID>
+        <orderPDDate>2018-08-08</orderPDDate>
+        <orderPDTime>09:10:20</orderPDTime>
+        <orderPDStaffID>3</orderPDStaffID>
+        <orderPDStaffName>staff1</orderPDStaffName>
+    </orderPD>
+    <orderPD orderPDID="4">
+        <orderPDtype>delivery</orderPDtype>
+        <orderID>4</orderID>
+        <orderPDDate>2018-08-08</orderPDDate>
+        <orderPDTime>08:10:00</orderPDTime>
+        <orderPDStaffID>4</orderPDStaffID>
+        <orderPDStaffName>staff2</orderPDStaffName>
+    </orderPD>
+    <orderPD orderPDID="5">
+        <orderPDtype>delivery</orderPDtype>
+        <orderID>5</orderID>
+        <orderPDDate>2018-08-09</orderPDDate>
+        <orderPDTime>08:13:00</orderPDTime>
+        <orderPDStaffID>3</orderPDStaffID>
+        <orderPDStaffName>staff1</orderPDStaffName>
+    </orderPD>
+    <orderPD orderPDID="6">
+        <orderPDtype>delivery</orderPDtype>
+        <orderID>6</orderID>
+        <orderPDDate>2018-08-09</orderPDDate>
+        <orderPDTime>08:10:00</orderPDTime>
+        <orderPDStaffID>4</orderPDStaffID>
+        <orderPDStaffName>staff2</orderPDStaffName>
+    </orderPD>
+</orderPDs>

@@ -81,8 +81,8 @@
 		</tr>
                 <tr>
 			<td>Customer Type</td>
-			<td><input type="radio" name="CusType" value="Consumer" <?php /* if(isset($_POST['CusType']) && $_POST['CusType']=="Consumer") { ?>checked<?php  } */?>> Consumer
-			<input type="radio" name="CusType" value="Corporate" <?php /*if(isset($_POST['CusType']) && $_POST['CusType']=="Corporate") { ?>checked<?php  } */?>> Corporate
+			<td><input type="radio" name="CusType" value="Consumer" <?php if(isset($_POST['CusType']) && $_POST['CusType']=="Consumer") { ?>checked<?php  } ?>> Consumer
+			<input type="radio" name="CusType" value="Corporate" <?php if(isset($_POST['CusType']) && $_POST['CusType']=="Corporate") { ?>checked<?php  } ?>> Corporate
 			</td>
 		</tr>
                 <tr>
@@ -106,7 +106,7 @@
 		
 		<tr>
 			<td colspan=2>
-			<input type="checkbox" name="terms"> I accept Terms and Conditions <input type="submit" name="register-user" value="Register" class="btnRegister">
+			<input type="checkbox" name="terms" required> I accept Terms and Conditions <input type="submit" name="register-user" value="Register" class="btnRegister">
                         </td>
 		</tr>
 	</table>

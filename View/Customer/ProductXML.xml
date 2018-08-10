@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProductTable>
+    <ProductRole>
+        <ProductID>1</ProductID>
+        <ProductName>2000-12-12</ProductName>
+        <ProductQuantity>12.90</ProductQuantity>
+        <ProductAvailable>Spring</ProductAvailable>
+        <ProductPrice>Autumn</ProductPrice>
+        <ProductCategory>Autumn</ProductCategory>
+                    
+    </ProductRole>
+      <ProductRole>
+        <ProductID>2</ProductID>
+        <ProductName>2000-12-12</ProductName>
+        <ProductQuantity>11.35</ProductQuantity>
+        <CataCatergory>Autumn</CataCatergory>
+        <ProductPrice>Autumn</ProductPrice>
+        <ProductCategory>Autumn</ProductCategory>
+                    
+    </ProductRole>
+</ProductTable>

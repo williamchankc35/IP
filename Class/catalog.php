@@ -9,11 +9,13 @@ class catalog {
     private $cataPeriod;
     private $cataPrice;
     private $cataDesc;
+    private $cataCategory;
     
-    function __construct($cataPeriod, $cataPrice, $cataDesc) {
+    function __construct($cataPeriod, $cataPrice, $cataDesc, $cataCategory) {
         $this->cataPeriod = $cataPeriod;
         $this->cataPrice = $cataPrice;
         $this->cataDesc = $cataDesc;
+        $this->cataCategory = $cataCategory;
     }
 
     function getCataPeriod() {
@@ -27,6 +29,10 @@ class catalog {
     function getCataDesc() {
         return $this->cataDesc;
     }
+    
+    function getCataCategory() {
+        return $this->cataCategory;
+    }
 
     function setCataPeriod($cataPeriod) {
         $this->cataPeriod = $cataPeriod;
@@ -39,6 +45,8 @@ class catalog {
     function setCataDesc($cataDesc) {
         $this->cataDesc = $cataDesc;
     }
-
-
+    
+    function setCataCategory($cataCategory) {
+        $this->cataCategory = $cataCategory;
+    }
 }

@@ -14,7 +14,7 @@ class catalogDA {
     public function insertCatalog(catalog $catalog) {
         try {
             $sql = "INSERT INTO " . $this->tableName . " (cataPeriod, cataPrice, cataDesc) "
-                    . "VALUES ('" . $catalog->getCataPeriod() . "','" . $catalog->getCataPrice() . "','" . $catalog->getCataDesc() . "')";
+                    . "VALUES ('" . $catalog->getCataPeriod() . "','" . $catalog->getCataPrice() . "','" . $catalog->getCataDesc() . "','" . $catalog->getCataCategory() . "')";
             
             $conn = new PDO("mysql:host=$this->servername;dbname=$this->dbname", $this->username, $this->password);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -50,8 +50,8 @@ class catalogDA {
         try {
             $conn = new PDO("mysql:host=$this->servername;dbname=$this->dbname", $this->username, $this->password);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $sql = "UPDATE " . $this->tableName . " SET cataPeriod = '" . $catalog->getCataPeriod() .
-                    "' , cataPrice = '" . $catalog->getCataPrice() . "' , cataDesc = '" . $catalog->getCataDesc() .
+            $sql = "UPDATE " . $this->tableName . " SET cataPeriod = '" . $catalog->getCataPeriod() . "' , cataPrice = '" . 
+                    $catalog->getCataPrice() . "' , cataDesc = '" . $catalog->getCataDesc() . $catalog->getCataCategory() . 
                     "' WHERE cataID = '" . $catalog->getCataID() . "'";
             $stmt = $conn->prepare($sql);
             $stmt->execute();
@@ -85,6 +85,26 @@ class catalogDA {
             $conn = new PDO("mysql:host=$this->servername;dbname=$this->dbname", $this->username, $this->password);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $stmt = $conn->prepare("SELECT * FROM " . $this->tableName);
+            $stmt->execute();
+            $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            foreach (new TableRows(new RecursiveArrayIterator($stmt->fetchAll())) as $k => $v) {
+                echo $v;
+            }
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+        $conn = null;
+        echo "</table>";
+    }
+    
+    public function retrieveProductbyCatalog($cataName) {
+        echo "<table style='border: solid 1px black;'>";
+        echo "<tr><th>ID</th><th>Name</th><th>Quantity</th><th>Available</th><th>Price</th><th>Category</th></tr>";
+        try {
+            
+            $conn = new PDO("mysql:host=$this->servername;dbname=$this->dbname", $this->username, $this->password);
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $stmt = $conn->prepare("SELECT * FROM PRODUCT WHERE prodCategory = '" . $cataName . "'");
             $stmt->execute();
             $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
             foreach (new TableRows(new RecursiveArrayIterator($stmt->fetchAll())) as $k => $v) {

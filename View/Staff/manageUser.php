@@ -22,7 +22,7 @@ and open the template in the editor.
                         <td>User ID</td>
                         <td>User ID will be auto generated</td>
                         <td>User ID</td>
-                        <td><input type="text" name="userID" value="" /> Only for Retrieve,Update and Delete</td>
+                        <td><input type="text" name="userID" value="" /> For Retrieve,Update and Delete only </td>
                     </tr>
                     <tr>
                         <td>User Type</td>
@@ -31,26 +31,18 @@ and open the template in the editor.
                             <input type="radio" name="userType" value="staff" />Staff
                             <input type="radio" name="userType" value="admin" />Admin
                         </td>
-                        <td>User Type</td>
-                        <td><input type="text" name="userType1" value="" readonly="readonly" /></td>
                     </tr>
                     <tr>
                         <td>User Name</td>
                         <td><input type="text" name="userName" value="" /></td>
-                        <td>User Name</td>
-                        <td><input type="text" name="userName1" value="" readonly="readonly" /></td>
                     </tr>
                     <tr>
                         <td>Password</td>
                         <td><input type="password" name="userPassword" value="" /></td>
-                        <td>Password</td>
-                        <td><input type="text" name="userPassword1" value="" readonly="readonly" /></td>
                     </tr>
                     <tr>
                         <td>Status</td>
                         <td><textarea name="userStatus" rows="4" cols="20">--Enter user status here--</textarea></td>
-                        <td>Status</td>
-                        <td><textarea name="userStatus1" rows="4" cols="20" readonly="readonly"></textarea></td>
                     </tr>
                     <tr>
                         <td>
@@ -79,6 +71,9 @@ and open the template in the editor.
                     ?>
                 </tr>
             </table>
+        </form>
+        <form>
+            
         </form>
     </body>
 </html>
