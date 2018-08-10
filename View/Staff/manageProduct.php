@@ -25,16 +25,16 @@ and open the template in the editor.
                         <td><input type="text" name="prodID" value="" /> Only for Retrieve,Update and Delete</td>
                     </tr>
                     <tr>
-                        <td>Product Type</td>
-                        <td><input type="text" name="prodType" value="" /></td>
-                        <td>Product Type</td>
-                        <td><input type="text" name="prodType1" value="" readonly="readonly" /></td>
+                        <td>Product Name</td>
+                        <td><input type="text" name="prodName" value="" /></td>
+                        <td>Product Name</td>
+                        <td><input type="text" name="prodName1" value="" readonly="readonly" /></td>
                     </tr>
                     <tr>
-                        <td>Product Description</td>
-                        <td><textarea name="prodDesc" rows="4" cols="20">--Enter product description here--</textarea></td>
-                        <td>Product Description</td>
-                        <td><textarea name="prodDesc1" rows="4" cols="20" readonly="readonly"></textarea></td>
+                        <td>Product Quantity</td>
+                        <td><textarea name="prodQuantity" rows="4" cols="20">--Enter product quantity here--</textarea></td>
+                        <td>Product Quantity</td>
+                        <td><textarea name="prodQuantity1" rows="4" cols="20" readonly="readonly"></textarea></td>
                     </tr>
                     <tr>
                         <td>Product Available?</td>
@@ -47,6 +47,30 @@ and open the template in the editor.
                         <td><textarea name="prodPrice" rows="4" cols="20"></textarea></td>
                         <td>Product Price</td>
                         <td><textarea name="prodPrice1" rows="4" cols="20" readonly="readonly"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>Product Category</td>
+                        <td>
+                        <select name="prodCategory">
+                            <option value="Spring" selected>Spring</option>
+                            <option value="Summer">Summer</option>
+                            <option value="Autumn">Autumn</option>
+                            <option value="Winter">Winter</option>
+                            <option value="Valentine">Valentine</option>
+                            <option value="Graduation Bouquet">Graduation Bouquet</option>
+                        </select>                         
+                        </td>
+                        <td>Product Category</td>
+                        <td>
+                        <select name="prodCategory1">
+                            <option value="1">Spring</option>
+                            <option value="2">Summer</option>
+                            <option value="3">Autumn</option>
+                            <option value="4">Winter</option>
+                            <option value="5" selected>Valentine</option>
+                            <option value="6">graduation bouquet</option>
+                        </select>>
+                        </td>
                     </tr>
                     <tr>
                         <td>

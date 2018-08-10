@@ -75,10 +75,11 @@ try {
         )");
     $conn->exec("CREATE TABLE $dbname.product(
         prodID INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-        prodType VARCHAR(50),
-        prodDesc VARCHAR(200),
+        prodName VARCHAR(50),
+        prodQuantity INT,
         prodAvailable VARCHAR(10),
-        prodPrice DOUBLE
+        prodPrice DOUBLE,
+        prodCategory VARCHAR(200)
         )");
     $conn->exec("CREATE TABLE $dbname.user(
         userID INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,

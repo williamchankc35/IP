@@ -7,29 +7,31 @@
 class product {
     
     //private $prodID;
-    private $prodType;
-    private $prodDesc;
+    private $prodName;
+    private $prodQuantity;
     private $prodAvailable;
     private $prodPrice;
+    private $prodCategory;
     
-    function __construct($prodType, $prodDesc, $prodAvailable, $prodPrice) {
+    function __construct($prodName, $prodQuantity, $prodAvailable, $prodPrice, $prodCategory) {
 //        $this->prodID = $prodID;
-        $this->prodType = $prodType;
-        $this->prodDesc = $prodDesc;
+        $this->prodName = $prodName;
+        $this->prodQuantity = $prodQuantity;
         $this->prodAvailable = $prodAvailable;
         $this->prodPrice = $prodPrice;
+        $this->prodCategory = $prodCategory;
     }
 
 //    function getProdID() {
 //        return $this->prodID;
 //    }
 
-    function getProdType() {
-        return $this->prodType;
+    function getProdName() {
+        return $this->prodName;
     }
 
-    function getProdDesc() {
-        return $this->prodDesc;
+    function getProdQuantity() {
+        return $this->prodQuantity;
     }
 
     function getProdAvailable() {
@@ -39,17 +41,21 @@ class product {
     function getProdPrice() {
         return $this->prodPrice;
     }
+    
+    function getProdCategory() {
+        return $this->prodCategory;
+    }
 
 //    function setProdID($prodID) {
 //        $this->prodID = $prodID;
 //    }
 
-    function setProdType($prodType) {
-        $this->prodType = $prodType;
+    function setProdName($prodName) {
+        $this->prodName = $prodName;
     }
 
-    function setProdDesc($prodDesc) {
-        $this->prodDesc = $prodDesc;
+    function setProdQuantity($prodQuantity) {
+        $this->prodQuantity = $prodQuantity;
     }
 
     function setProdAvailable($prodAvailable) {
@@ -59,6 +65,8 @@ class product {
     function setProdPrice($prodPrice) {
         $this->prodPrice = $prodPrice;
     }
-
-
+    
+    function setProdCategory($prodCategory) {
+        $this->prodCategory = $prodCategory;
+    }
 }

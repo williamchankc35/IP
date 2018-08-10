@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CatalogTable>
+    <CatalogRow>
+        <CataID>1</CataID>
+        <CataPeriod>2000-12-12</CataPeriod>
+        <CataPrice>12.90</CataPrice>
+        <CataCatergory>Spring</CataCatergory>
+                    
+    </CatalogRow>
+      <CatalogRow>
+        <CataID>2</CataID>
+        <CataPeriod>2000-12-12</CataPeriod>
+        <CataPrice>11.35</CataPrice>
+        <CataCatergory>Autumn</CataCatergory>
+                    
+    </CatalogRow>
+</CatalogTable>

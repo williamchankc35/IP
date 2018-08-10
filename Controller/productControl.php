@@ -4,11 +4,12 @@ include_once dirname(__FILE__) . '/../DataAccess/productDA.php';
 
 $prodDA = new productDA;
 if (isset($_POST['CProd'])) {
-    $prodType = $_POST["prodType"];
-    $prodDesc = $_POST["prodDesc"];
+    $prodName = $_POST["prodName"];
+    $prodQuantity = $_POST["prodQuantity"];
     $prodAvailable = $_POST["productRB"];
     $prodPrice = $_POST["prodPrice"];
-    $product = new product($prodType, $prodDesc, $prodAvailable, $prodPrice);
+    $prodCategory = $_POST["prodCategory"];
+    $product = new product($prodName, $prodQuantity, $prodAvailable, $prodPrice, $prodCategory);
     $prodDA->insertProduct($product);
 }
 if (isset($_POST['RProd'])) {
@@ -17,11 +18,12 @@ if (isset($_POST['RProd'])) {
 }
 if (isset($_POST['UProd'])) {
     $prodID = $_POST["prodID"];
-    $prodType = $_POST["prodType"];
-    $prodDesc = $_POST["prodDesc"];
+    $prodName = $_POST["prodName"];
+    $prodQuantity = $_POST["prodQuantity"];
     $prodAvailable = $_POST["productRB"];
     $prodPrice = $_POST["productPrice"];
-    $product = new product($prodType, $prodDesc, $prodAvailable, $prodPrice);
+    $prodCategory = $_POST["prodCategory"];
+    $product = new product($prodName, $prodQuantity, $prodAvailable, $prodPrice, $prodCategory);
     $prodDA->updateProduct($product, $prodID);
 }
 if (isset($_POST['DProd'])) {
