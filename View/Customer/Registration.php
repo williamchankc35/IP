@@ -1,31 +1,15 @@
-<?Php
-
-if(!empty($_POST["register-user"])) {  
-foreach($_POST as $key=>$value) {
-	if(empty($_POST[$key])) {
-	$error_message = "All Fields are required";
-	break;
-	}
-}
-if($_POST['Password'] != $_POST['confirm_password']){ 
-$error_message = 'Passwords should be same<br>'; 
-}
-
-if(!isset($error_message)) {
-	if (!filter_var($_POST["Email"], FILTER_VALIDATE_EMAIL)) {
-	$error_message = "Invalid Email Address";
-	}
-}
-
-if(!isset($error_message)) {
-	if(!isset($_POST["terms"])) {
-	$error_message = "Accept Terms and Conditions to Register";
-	}
-}
-}
+<?Php 
 ?>
-
 <html>
+    <script type="text/javascript">
+
+  if(!RegExp.escape) {
+    RegExp.escape = function(s) {
+      return String(s).replace(/[\\^$*+?.()|[\]{}]/g, '\\$&');
+    };
+  }
+</script>
+  
   <head>
     <title>Customer Registration From</title>
      <a  href="CustomerLogin.php">
@@ -86,14 +70,14 @@ if(!isset($error_message)) {
       <form name="frmRegistration" method="post" action="../../Controller/CustomerControl.php">
 	<table border="0" width="500" align="center" class="demo-table">
 		<?php if(!empty($success_message)) { ?>	
-		<div class="success-message"><?php if(isset($success_message)) echo $success_message; ?></div>
+		<div class="success-message"><?php if(isset($success_message)) echo $success_message;  ?></div>
 		<?php } ?>
 		<?php if(!empty($error_message)) { ?>	
 		<div class="error-message"><?php if(isset($error_message)) echo $error_message; ?></div>
 		<?php } ?>
 		<tr>
 			<td>Customer Name</td>
-			<td><input type="text" class="demoInputBox" name="CusName" value="<?php if(isset($_POST['CusName'])) echo $_POST['CusName']; ?>"></td>
+                        <td><input type="text" class="demoInputBox" name="CusName" value="<?php if(isset($_POST['CusName'])) echo $_POST['CusName']; ?>" required></td>
 		</tr>
                 <tr>
 			<td>Customer Type</td>
@@ -103,26 +87,27 @@ if(!isset($error_message)) {
 		</tr>
                 <tr>
 			<td>Email</td>
-                        <td><input type="text" class="demoInputBox" name="Email" value="<?php if(isset($_POST['Email'])) echo $_POST['Email']; ?>"></td>
+                        <td><input type="text" class="demoInputBox" name="Email" value="<?php if(isset($_POST['Email'])) echo $_POST['Email']; ?>" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" title="Email should only correct format. e.g. xxx@xxmail.com" reuquired></td>
 		</tr>
 
 		<tr>
 			<td>Username</td>
-			<td><input type="text" class="demoInputBox" name="Username" value="<?php if(isset($_POST['Username'])) echo $_POST['Username']; ?>"></td>
+			<td><input type="text" class="demoInputBox" name="Username" value="<?php if(isset($_POST['Username'])) echo $_POST['Username']; ?>" reuquired></td>
 		</tr>
 		<tr>
 			<td>Password</td>
-			<td><input type="password" class="demoInputBox" name="Password" value=""></td>
+			<td><input type="password"  class="demoInputBox" name="Password" value="" pattern=".{6,}" title="Six or more characters" reuquired onchange="form.confirm_password.pattern = RegExp.escape(this.value);"></td>
 		</tr>
 		<tr>
 			<td>Confirm Password</td>
-			<td><input type="password" class="demoInputBox" name="confirm_password" value=""></td>
+			<td><input type="password"  class="demoInputBox" name="confirm_password" value="" required title="confirm password must same as password"></td>
 		</tr>
 		
 		
 		<tr>
 			<td colspan=2>
-			<input type="checkbox" name="terms"> I accept Terms and Conditions <input type="submit" name="register-user" value="Register" class="btnRegister"></td>
+			<input type="checkbox" name="terms"> I accept Terms and Conditions <input type="submit" name="register-user" value="Register" class="btnRegister">
+                        </td>
 		</tr>
 	</table>
        

@@ -1,4 +1,3 @@
-
 <html>
 
     <body>
@@ -26,7 +25,7 @@
                             $mysql_hostname = "localhost";
                             $mysql_user = "root";
                             $mysql_password = "";
-                            $mysql_database = "flowerdb";
+                            $mysql_database = "fioreflowerdb";
                             $dbh = new PDO("mysql:dbname={$mysql_database};host={$mysql_hostname};port=3306", $mysql_user, $mysql_password);
                             $xmlObject = $xmlDoc->getElementsByTagName('CustomerRow');
                             $itemCount = $xmlObject->length;

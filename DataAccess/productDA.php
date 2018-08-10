@@ -25,7 +25,6 @@ class productDA {
             echo $sql . "<br>" . $e->getMessage();
         }
         $conn = null;
-        return $sql;
     }
 
     public function retrieveProduct($prodID) {
@@ -61,7 +60,6 @@ class productDA {
             echo $sql . "<br>" . $e->getMessage();
         }
         $conn = null;
-        return $sql;
     }
 
     public function deleteProduct($prodID) {
