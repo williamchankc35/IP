@@ -7,32 +7,17 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
   header("location: Customerlogin.php");
   exit;
 }
-include_once '../../Controller/CustomerControl.php';
-include_once '../../Class/Customer.php';
-include_once '../../DataAccess/LoiginDBSetting.php';
-include_once '../../DataAccess/CustomerDA.php';
-Global $Preset1;
-Global $Preset2;
-
-if(!empty($_POST["Update-user"])) {
-  
-foreach($_POST as $key=>$value) {
-	if(empty($_POST[$key])) {
-	$error_message = "All Fields are required";
-	break;
-	}
-}
-if($_POST['Password'] != $_POST['confirm_password']){ 
-$error_message = 'Passwords should be same<br>'; 
-}
-if(!isset($error_message)) {
-	if (!filter_var($_POST["Email"], FILTER_VALIDATE_EMAIL)) {
-	$error_message = "Invalid Email Address";
-	}
-}
-}
 ?>
 <html>
+    <script type="text/javascript">
+
+  if(!RegExp.escape) {
+    RegExp.escape = function(s) {
+      return String(s).replace(/[\\^$*+?.()|[\]{}]/g, '\\$&');
+    };
+  }
+</script>
+  
   <head>
     <title>Customer Registration From</title>
 
@@ -52,7 +37,7 @@ if(!isset($error_message)) {
 		<?php } ?>
 		<tr>
 			<td>Customer Name</td>
-			<td><input type="text" class="demoInputBox" name="CusName" value="<?php if(isset($_POST['CusName'])) echo $_POST['CusName']; ?>"></td>
+			<td><input type="text" class="demoInputBox" name="CusName" value="<?php if(isset($_POST['CusName'])) echo $_POST['CusName']; ?>"required></td>
 		</tr>
                 <tr>
 			<td>Customer Type</td>
@@ -62,21 +47,22 @@ if(!isset($error_message)) {
 		</tr>
                 <tr>
 			<td>Email</td>
-                        <td><input type="text" class="demoInputBox" name="Email" value="<?php if(isset($_POST['Email'])) echo $_POST['Email']; ?>"></td>
+                        <td><input type="text" class="demoInputBox" name="Email" value="<?php if(isset($_POST['Email'])) echo $_POST['Email']; ?>" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" title="Email should only correct format. e.g. xxx@xxmail.com" reuquired></td>
 		</tr>
 
 		<tr>
 			<td>Password</td>
-			<td><input type="password" class="demoInputBox" name="Password" value=""></td>
+			<td><input type="password" class="demoInputBox" name="Password" value="" required onchange="form.confirm_password.pattern = RegExp.escape(this.value);"></td>
 		</tr>
 		<tr>
 			<td>Confirm Password</td>
-			<td><input type="password" class="demoInputBox" name="confirm_password" value=""></td>
+			<td><input type="password" class="demoInputBox" name="confirm_password" value="" title="confirm password must same as password"></td>
 		</tr>
 		
 		
 		<tr>
-			<td colspan=2>
+			<td></td>
+                        <td colspan=2>
 			<input type="submit" name="Update-user" value="Update" class="btnRegister"></td>
 		</tr>
 	</table>

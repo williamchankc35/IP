@@ -2,17 +2,20 @@
 include_once dirname(__FILE__).'/../DataAccess/CustomerDA.php';
 $da = new CustomerDA();
 $new = new CustomerControl();
+$Preset1 = $Preset2= "";
 
 if(isset($_POST["register-user"])){
         
-    if($_POST['CusType'] = 'Corporate'){ 
+    if($_POST["CusType"] == "Corporate"){ 
     $Preset1 = 1000.00;
-    $Preset2 ='Good';
+    $Preset2 ="Good";
 }
-   else if($_POST['CusType'] = 'Consumer'){ 
+   else if($_POST["CusType"] == "Consumer"){ 
     $Preset1 = 0.00;
-    $Preset2='Consumer';
+    $Preset2="Consumer";
 }
+  else{ $Preset1 = 0.00;
+        $Preset2= null;}
     $CusID = $new->getNewID();
     $CusType = $_POST["CusType"];
     $CusName = $_POST["CusName"];
@@ -26,8 +29,7 @@ if(isset($_POST["register-user"])){
     
     }
 if(isset($_POST["Login"])){
-   
-  
+    
     $username = $_POST["username"];
     $password = $_POST["password"];
   
@@ -35,17 +37,18 @@ if(isset($_POST["Login"])){
     
 }
 
-if(isset($_POST["Update-user"])){
-  
-        
-    if($_POST['CusType'] = 'Corporate'){ 
+if(isset($_POST["Update-user"])&&empty($error_message)){
+          
+    if($_POST["CusType"] == "Corporate"){ 
     $Preset1 = 1000.00;
-    $Preset2 ='Good';
+    $Preset2 ="Good";
 }
-   else if($_POST['CusType'] = 'Consumer'){ 
+   else if($_POST["CusType"] == "Consumer"){ 
     $Preset1 = 0.00;
-    $Preset2='Consumer';
+    $Preset2="Consumer";
 }
+  else{ $Preset1 = 0.00;
+        $Preset2= null;}
     $CusID = null;
     $CusType = $_POST["CusType"];
     $CusName = $_POST["CusName"];
@@ -57,7 +60,7 @@ if(isset($_POST["Update-user"])){
     $customer = new Customer($CusID,$CusType,$CusName,$username, $Password,$Email, $CreditLimit,$Status);
     $da->updateCustomer($customer,$username);
     
-    }
+    }    
 
 
 class CustomerControl{
@@ -67,27 +70,9 @@ class CustomerControl{
     function __construct() {
         $this->CustomerDA = new CustomerDA();
     }
-   
-   
-    public function retrieveRecordwithID($CusID) {
-        if ($this->CustomerDA == NULL) {
-            $this->CustomerDA = new CustomerDA();
-        }
-        return $this->CustomerDA->retrieveRecordwithID($CusID);
-    }
-
-    function insertRecord(Customer $Customer) {
-        if ($this->CustomerDA == NULL) {
-            $this->CustomerDA = new CustomerDA();
-        }
-        return $this->CustomerDA->insertRecord($Customer);
-    }
-
-    function updateRecord(Customer $Customer) {
-        if ($this->CustomerDA == NULL) {
-            $this->CustomerDA = new CustomerDA();
-        }
-        return $this->CustomerDA->updateRecord($Customer);
+    
+    public function register(){
+        
     }
     function retrieveAll() {
         if ($this->CustomerDA == NULL) {
@@ -95,38 +80,6 @@ class CustomerControl{
         }
         return $this->CustomerDA->retrieveAll();
     }
-    
-    function verifyCustomer($Username ,$Password){
-        if ($this->CustomerDA == NULL) {
-            $this->CustomerDA = new CustomerDA();
-        }
-        return $this->CustomerDA->verifyCustomer($Username ,$Password);
-    }
-    public function retrieveIDithName($CusName) {
-       if ($this->CustomerDA  == NULL) {
-            $this->CustomerDA  = new CustomerDA();
-        }
-        return $this->CustomerDA ->retrieveIDithName($CusName);
-    
-        
-    }
-    
-    public function retrieveNamewithID($CusID) {
-        if ($this->CustomerDA  == NULL) {
-            $this->CustomerDA  = new CustomerDA();
-        }
-        return $this->CustomerDA ->retrieveNamewithID($CusID);
-    
-    }
-    
-    public function retrieveIDwithName($CusName) {
-        if ($this->CustomerDA  == NULL) {
-            $this->CustomerDA  = new CustomerDA ();
-        }
-        return $this->CustomerDA ->retrieveIDwithName($CusName);
-        
-    }
-    
     function getNewID (){
         if ($this->CustomerDA  == NULL) {
             $this->CustomerDA  = new CustomerDA();
@@ -135,6 +88,7 @@ class CustomerControl{
        $totalrow = $row+1;
         return "CS".$totalrow;
     }
+       
     
 }
 ?>
