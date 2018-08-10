@@ -4,6 +4,9 @@
 include_once 'TableRows.php';
 include_once dirname(__FILE__) . '/../Class/order.php';
 
+
+
+
 class orderDA {
 
     private $tableName = "order";
@@ -11,7 +14,7 @@ class orderDA {
     private $username = "root";
     private $password = "";
     private $dbname = "FioreFlowershopDB";
-    
+        
     public function insertOrder(order $order) {
         try {
             $sql = "INSERT INTO" . $this->tableName .
@@ -170,7 +173,24 @@ class orderDA {
         echo "</table>";
     }
 
+    public function addOrderDetSession($prodid,$qty){
+        try {
+            $conn = new PDO("mysql:host=$this->servername;dbname=$this->dbname", $this->username, $this->password);
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            
+            echo "You are here <br />";
+            $stmt = $conn->prepare("SELECT * FROM ". $this->tableName);
+            $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            $lastOrderID=$result['lastid'];
+            echo $lastOrderID;
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
+    
     public function showOrderDetail(){
         
     }
 }
+
