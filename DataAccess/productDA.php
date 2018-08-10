@@ -15,8 +15,8 @@ class productDA {
 
     public function insertProduct(product $product) {
         try {
-            $sql = "INSERT INTO " . $this->tableName . " (prodType, prodDesc, prodAvailable) "
-                    . "VALUES ('" . $product->getProdType() . "','" . $product->getProdDesc() . "','" . $product->getProdAvailable() . "')";
+            $sql = "INSERT INTO " . $this->tableName . " (prodType, prodDesc, prodAvailable, prodPrice) "
+                    . "VALUES ('" . $product->getProdType() . "','" . $product->getProdDesc() . "','" . $product->getProdAvailable() . "','" . $product->getProdPrice() . "')";
             $conn = new PDO("mysql:host=$this->servername;dbname=$this->dbname", $this->username, $this->password);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $conn->exec($sql);
@@ -25,6 +25,7 @@ class productDA {
             echo $sql . "<br>" . $e->getMessage();
         }
         $conn = null;
+        return $sql;
     }
 
     public function retrieveProduct($prodID) {
@@ -51,7 +52,7 @@ class productDA {
             $conn = new PDO("mysql:host=$this->servername;dbname=$this->dbname", $this->username, $this->password);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $sql = "UPDATE " . $this->tableName . " SET prodType = '" . $product->getProdType() .
-                    "' , prodDesc = '" . $product->getProdDesc() . "' , prodAvailable = '" . $product->getProdAvailable() .
+                    "' , prodDesc = '" . $product->getProdDesc() . "' , prodAvailable = '" . $product->getProdAvailable() . $product->getProdPrice() .
                     "' WHERE prodID = '" . $prodID . "'";
             $stmt = $conn->prepare($sql);
             $stmt->execute();
@@ -60,6 +61,7 @@ class productDA {
             echo $sql . "<br>" . $e->getMessage();
         }
         $conn = null;
+        return $sql;
     }
 
     public function deleteProduct($prodID) {

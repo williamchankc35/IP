@@ -43,6 +43,12 @@ and open the template in the editor.
                         <td><input type="text" name="prodAvailable" value="" readonly="readonly" /></td>
                     </tr>
                     <tr>
+                        <td>Product Price</td>
+                        <td><textarea name="prodPrice" rows="4" cols="20"></textarea></td>
+                        <td>Product Price</td>
+                        <td><textarea name="prodPrice1" rows="4" cols="20" readonly="readonly"></textarea></td>
+                    </tr>
+                    <tr>
                         <td>
                             <input type="submit" value="Create" name="CProd" />
                             <input type="submit" value="Retrieve" name="RProd" />
