@@ -93,7 +93,22 @@ class productDA {
         }
         $conn = null;
         echo "</table>";
-    }    
+    }
+    
+    public function retrieveProductData($prodID) {
+        try {
+            $conn = new PDO("mysql:host=$this->servername;dbname=$this->dbname", $this->username, $this->password);
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $stmt = $conn->prepare("SELECT prodType, prodDesc, prodAvailable, prodPrice FROM `" . $this->tableName . "` WHERE prodID='" . $prodID . "'");
+            $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            $product = new product($result['prodType'], $result['prodDesc'], $result['prodAvailable'], $result['prodPrice']);
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+            $product = null;
+        }
+        return $product;
+    }
 }
 
 //$testprod = new productDA();
