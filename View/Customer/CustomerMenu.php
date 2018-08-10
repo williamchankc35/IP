@@ -36,7 +36,7 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
     <div class="page-header">
         <h1>Hi, <b ><font color="red"><?php echo htmlspecialchars($_SESSION['username']); ?></font></b>. Welcome to our site.</h1>
         <p><a href="logout.php" class="btn btn-danger">Sign Out of Your Account</a></p>
-        <table align="center" border="1">
+        <table align="center" border="1" cellspacing="5" cellpadding="5" width="100%" >
             
         <tr>
             <td><li class="no-sub"><a href="CustomerDetail.php" target="iframe">Profile</a></li></td>

@@ -15,35 +15,22 @@ Global $Preset1;
 Global $Preset2;
 
 if(!empty($_POST["Update-user"])) {
-    
-    if($_POST['CusType'] = 'Corporate'){ 
-    $Preset1 = 1000.00;
-    $Preset2 ='Good';
-}
-   else if($_POST['CusType'] = 'Consumer'){ 
-    $Preset1 = 0.00;
-    $Preset2='Consumer';
-}
-else{ $error_message ="Please select Customer type";}
-    
+  
 foreach($_POST as $key=>$value) {
 	if(empty($_POST[$key])) {
 	$error_message = "All Fields are required";
 	break;
 	}
 }
-/* Password Matching Validation */
 if($_POST['Password'] != $_POST['confirm_password']){ 
 $error_message = 'Passwords should be same<br>'; 
 }
-/* Email Validation */
 if(!isset($error_message)) {
 	if (!filter_var($_POST["Email"], FILTER_VALIDATE_EMAIL)) {
 	$error_message = "Invalid Email Address";
 	}
 }
 }
-
 ?>
 <html>
   <head>

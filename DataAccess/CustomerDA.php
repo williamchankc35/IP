@@ -35,6 +35,41 @@ class CustomerDA {
         }
         $conn = null;
     }
+    public function Login($username,$password){
+        try {
+            $pdo = new PDO("mysql:host=$this->servername;dbname=$this->dbname", $this->username, $this->password);
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $sql = "SELECT Username, Password FROM customer WHERE Username = '".$username."'AND Password ='".$password."'";          
+            if($stmt = $pdo->prepare($sql)){                 
+            $stmt->bindParam($username, $param_username, PDO::PARAM_STR); 
+            $param_username = trim($username);          
+            
+            if($stmt->execute()){              
+                if($stmt->rowCount() == 1){
+                    if($row = $stmt->fetch()){
+                        $hashed_password = $password;
+                        if($password==$hashed_password){
+                            session_start();
+                            $_SESSION['username'] = $username;      
+                            header("location: ../View/Customer/CustomerMenu.php");
+                        }else{                            
+                            echo "The password you entered was not valid.";                           
+                        }                  
+                    }
+                } else{                   
+                    echo "No account found with that username.";
+                }
+            } else{
+                echo "Oops! Something went wrong. Please try again later.";
+            }
+        }      
+    }  
+        catch (PDOException $e) {
+            echo $sql . "<br>" . $e->getMessage();
+        }
+        $conn = null;
+              
+    }
     
      public function updateCustomer(customer $customer,$username) {
         try {
@@ -75,7 +110,7 @@ class CustomerDA {
         echo "</table>";
     }
 
-    
+   //-- unused--//
   //----------------------------------//   
     public function verifyCustomer($Username,$Password){
         $sql = "SELECT *FROM " . $this->tableName. "WHERE Username='"
