@@ -44,11 +44,11 @@ class orderDA {
             $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
             $lastid = $stmt->fetch();
             $sql = "INSERT INTO orderdetail" .
-                    "(orderid, prodid, itemqty, prodprice, subtotal) "
+                    "(orderid, prodid, prodName, itemqty, prodprice, subtotal) "
                     . "VALUES('" . $order->getOrderDate() . "','"
-                    . $od->getOrderID() . "','" . $order->getOrderCustName() . "','"
-                    . $order->getOrderPD() . "','" . $order->getOrderAddress() . "','"
-                    . $order->getOrderPDDATE() . "','" . $order->getOrderPDTime() . "','"
+                    . $od->getOrderID() . "','" . $od->getProdID() . "','"
+                    . $od->getProdName() . "','" . $od->getItemQty() . "','"
+                    . $od->getProdPrice() . "','" . $od->getSubtotal() . "','"
                     . $order->getOrderTotalAmount() . "')";
 
             $conn->exec($sql);
@@ -82,12 +82,12 @@ class orderDA {
     public function retrieveOrderDetail($orderID) {
         echo "</table><br/>";
         echo "<table style='border: solid 1px black;'>";
-        echo "<tr><th>Product ID</th><th>Item Quantity</th>"
+        echo "<tr><th>Product ID</th><th>Product Name</th><th>Item Quantity</th>"
         . "<th>Unit Price</th><th>Sub-total</th></tr>";
         try {
             $conn = new PDO("mysql:host=$this->servername;dbname=$this->dbname", $this->username, $this->password);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $stmt = $conn->prepare("SELECT prodid, itemqty, prodprice, subtotal FROM OrderDetail WHERE orderID = '" . $orderID . "'");
+            $stmt = $conn->prepare("SELECT prodid, prodname, itemqty, prodprice, subtotal FROM OrderDetail WHERE orderID = '" . $orderID . "'");
             $stmt->execute();
             $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
             foreach (new TableRows(new RecursiveArrayIterator($stmt->fetchAll())) as $k => $v) {
@@ -186,22 +186,22 @@ class orderDA {
         return $order;
     }
 
-    public function addOrderDetSession($prodid, $qty) {
+    public function getLastOrderID() {
         try {
             $conn = new PDO("mysql:host=$this->servername;dbname=$this->dbname", $this->username, $this->password);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $stmt = $conn->prepare("SELECT max(orderid) as lastid FROM `" . $this->tableName . "`");
             $stmt->execute();
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
-            $lastOrderID = $result['lastid'];
-            echo $lastOrderID;
+            if ($stmt->rowCount() > 0)
+                $lastOrderID = $result['lastid'];
+            else
+                $lastOrderID = 0;
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
+            $lastOrderID = null;
         }
-    }
-
-    public function showOrderDetail() {
-        
+        return $lastOrderID;
     }
 
 }

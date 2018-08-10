@@ -4,16 +4,18 @@ class orderDetail {
 
     private $orderID;
     private $prodID;
+    private $prodName;
     private $itemQty;
     private $prodPrice;
     private $subtotal;
 
-    function __construct($orderID, $prodID, $itemQty, $prodPrice) {
+    function __construct($orderID, $prodID, $prodName, $itemQty, $prodPrice) {
         $this->orderID = $orderID;
         $this->prodID = $prodID;
+        $this->prodName = $prodName;
         $this->itemQty = $itemQty;
         $this->prodPrice = $prodPrice;
-        countSubTotal();
+        $this->countSubTotal();
     }
 
     function getOrderID() {
@@ -22,6 +24,10 @@ class orderDetail {
 
     function getProdID() {
         return $this->prodID;
+    }
+
+    function getProdName() {
+        return $this->prodName;
     }
 
     function getItemQty() {
@@ -44,6 +50,10 @@ class orderDetail {
         $this->prodID = $prodID;
     }
 
+    function setProdName($prodName) {
+        $this->prodName = $prodName;
+    }
+
     function setProdPrice($prodPrice) {
         $this->prodPrice = $prodPrice;
     }
@@ -54,16 +64,21 @@ class orderDetail {
 
     function setItemQty($itemQty) {
         $this->itemQty = $itemQty;
-        countSubTotal();
+        $this->countSubTotal();
     }
 
     function setItemPrice($prodPrice) {
         $this->prodPrice = $prodPrice;
-        countSubTotal();
+        $this->countSubTotal();
     }
 
     function countSubTotal() {
-        $this->subtotal = $this->itemQty * $this->prodPrice;
+        $this->subtotal = (double) $this->itemQty * (double) $this->prodPrice;
+    }
+
+    function toString() {
+        return $this->orderID . " " . $this->prodID . " " . $this->prodName . " " . $this->itemQty 
+                . " " . $this->prodPrice . " " . $this->subtotal;
     }
 
 }

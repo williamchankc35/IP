@@ -55,7 +55,8 @@ try {
     $conn->exec("CREATE TABLE $dbname.orderDetail(
         orderID INT(6),
         prodID INT(6),
-        itemQty int(6),
+        prodName VARCHAR(40),
+        itemQty INT(6),
         prodPrice DOUBLE,
         subTotal DOUBLE
     )");
