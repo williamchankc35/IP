@@ -86,6 +86,7 @@ class CustomerDA {
             echo $sql . "<br>" . $e->getMessage();
         }
         $conn = null;
+        return $sql;
     }
 
      public function retrieveCustomer($username) {

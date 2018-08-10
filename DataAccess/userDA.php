@@ -27,13 +27,13 @@ class userDA {
         $conn = null;
     }
     
-    public function retrieveUser($userName) {
+    public function retrieveUser($userID) {
         echo "<table style='border: solid 1px black;'>";
-        echo "<tr><th>User Type</th><th>User Name</th><th>User Password</th><th>User Status</th></tr>";
+        echo "<tr><th>User ID</th><th>User Type</th><th>User Name</th><th>User Password</th><th>User Status</th></tr>";
         try {
             $conn = new PDO("mysql:host=$this->servername;dbname=$this->dbname", $this->username, $this->password);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $stmt = $conn->prepare("SELECT * FROM " . $this->tableName . " WHERE userName = '" . $userName . "'");
+            $stmt = $conn->prepare("SELECT * FROM " . $this->tableName . " WHERE userID = '" . $userID . "'");
             $stmt->execute();
             $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
             foreach (new TableRows(new RecursiveArrayIterator($stmt->fetchAll())) as $k => $v) {
@@ -46,13 +46,13 @@ class userDA {
         echo "</table>";
     }
     
-    public function updateUser(user $user) {
+    public function updateUser(user $user, $userID) {
         try {
             $conn = new PDO("mysql:host=$this->servername;dbname=$this->dbname", $this->username, $this->password);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $sql = "UPDATE " . $this->tableName . " SET userType = '" . $user->getUserType() .
+            $sql = "UPDATE " . $this->tableName . " SET userName = '". $user->getUserName() . "', userType = '" . $user->getUserType() .
                     "' , userPassword = '" . $user->getUserPassword() . "' , userStatus = '" . $user->getUserStatus() .                   
-                    "' WHERE userName = '" . $user->getuserName() . "'";
+                    "' WHERE userID = '" . $userID . "'";
             $stmt = $conn->prepare($sql);
             $stmt->execute();
             echo $stmt->rowCount() . " records UPDATED successfully";
@@ -62,11 +62,11 @@ class userDA {
         $conn = null;
     }
     
-    public function deleteUser($userName) {
+    public function deleteUser($userID) {
         try {
             $conn = new PDO("mysql:host=$this->servername;dbname=$this->dbname", $this->username, $this->password);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $sql = "DELETE FROM " . $this->tableName . " WHERE userName = '" . $userName . "'";
+            $sql = "DELETE FROM " . $this->tableName . " WHERE userID = '" . $userID . "'";
             $conn->exec($sql);
             echo "Record deleted successfully";
         } catch (PDOException $e) {
@@ -77,11 +77,11 @@ class userDA {
     
     public function showAllUser() {
         echo "<table style='border: solid 1px black;'>";
-        echo "<tr><th>User Type</th><th>User Name</th><th>User Password</th><th>User Status</th></tr>";
+        echo "<tr><th>User ID</th><th>User Type</th><th>User Name</th><th>User Password</th><th>User Status</th></tr>";
         try {
             $conn = new PDO("mysql:host=$this->servername;dbname=$this->dbname", $this->username, $this->password);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $stmt = $conn->prepare("SELECT * FROM " . $this->tableName ."'");
+            $stmt = $conn->prepare("SELECT * FROM " . $this->tableName);
             $stmt->execute();
             $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
             foreach (new TableRows(new RecursiveArrayIterator($stmt->fetchAll())) as $k => $v) {

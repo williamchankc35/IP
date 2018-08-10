@@ -43,10 +43,18 @@ and open the template in the editor.
                         <td><input type="text" name="prodAvailable" value="" readonly="readonly" /></td>
                     </tr>
                     <tr>
-                        <td><input type="submit" value="Create" name="CProd" />
+                        <td>Product Price</td>
+                        <td><textarea name="prodPrice" rows="4" cols="20"></textarea></td>
+                        <td>Product Price</td>
+                        <td><textarea name="prodPrice1" rows="4" cols="20" readonly="readonly"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="submit" value="Create" name="CProd" />
                             <input type="submit" value="Retrieve" name="RProd" />
                             <input type="submit" value="Update" name="UProd" />
-                            <input type="submit" value="Delete" name="DProd" /></td>
+                            <input type="submit" value="Delete" name="DProd" />
+                        </td>
                     </tr>
                     <tr>
                         <td><input type="reset" value="Reset" name="Reset" />
@@ -62,8 +70,8 @@ and open the template in the editor.
                 <tr>
                     <?php
                     include_once dirname(__FILE__) . '/../../DataAccess/productDA.php';
-                    $show = new productDA();
-                    $show->showAllProduct();
+                    $showProd = new productDA();
+                    $showProd->showAllProduct();
                     ?>
                 </tr>
             </table>
