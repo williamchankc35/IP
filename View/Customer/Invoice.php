@@ -5,7 +5,7 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
   header("location: Customerlogin.php");
   exit;
 }
-
+$Total = null;
 ?>
 
 
@@ -35,7 +35,7 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
 		for($i=0; $row2 = $result2->fetch(); $i++){
 	?>
 		<tr>
-			<td><label><?php echo $row2['orderID'];  $oID=$row2['orderID'];?></label></td>
+			<td><label><?php echo $row2['orderID'];?></label></td>
 			<td><label><?php echo $row2['orderDate']; ?></label></td>		
 			<td><label><?php echo $row2['orderCustID']; ?></label></td>
                         <td><label><?php echo $row2['orderCustName']; ?></label></td>
@@ -44,13 +44,14 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
                         <td><label><?php echo $row2['orderPDDate']; ?></label></td>
                         <td><label><?php echo $row2['orderPDTime']; ?></label></td>
                         <td><label><?php echo $row2['orderTotalAmount']; ?></label></td>
-                                   <?php  $Total =+ $row2['orderTotalAmount']   ?>
+                                  <?php $Total += $row2['orderTotalAmount'];?>
                                     
               
 		</tr>
-              
+   <?php ;}     ?>           
 </table>
-  <h3 align="right"><?php   echo "Total Amount($time1 to $time2) : $Total" ;}  ?></h3>
+
+  <h3 align="right"><?php echo "Total Amount : $Total"?></h3>
   <form name="frmRegistration" method="post" action="CheckInvoiceOrderDetail.php">
                 <td>Search Order Detail</td>
                 <td><input type="text" name="oid" required pattern="[1-9999]" Title="Please enter number between 1-9999"> </td>
