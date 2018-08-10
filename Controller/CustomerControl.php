@@ -25,7 +25,9 @@ if(isset($_POST["register-user"])){
     $customer = new Customer($CusID,$CusType,$CusName,$Username,$Password, $Email, $CreditLimit,$Status);
     $da->RegisterUser($customer);
     }
-
+if(isset($_POST["add_to_cart"])){
+    
+}
 
 class CustomerControl{
    

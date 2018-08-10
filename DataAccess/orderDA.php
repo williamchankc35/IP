@@ -11,7 +11,7 @@ class orderDA {
     private $username = "root";
     private $password = "";
     private $dbname = "FioreFlowershopDB";
-
+    
     public function insertOrder(order $order) {
         try {
             $sql = "INSERT INTO" . $this->tableName .
@@ -79,6 +79,7 @@ class orderDA {
         $conn = null;
         
     }
+    
     public function retrieveOrderDetail($orderID){
         echo "</table><br/>";
         echo "<table style='border: solid 1px black;'>";
@@ -169,4 +170,7 @@ class orderDA {
         echo "</table>";
     }
 
+    public function showOrderDetail(){
+        
+    }
 }

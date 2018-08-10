@@ -11,12 +11,13 @@
                      <form method="post" action="index.php?action=add&id=<?php echo $row["id"]; ?>">  
                           <div style="border:1px solid #333; background-color:#f1f1f1; 
                                border-radius:5px; padding:16px;" align="center">  
-                                
-                               <h4 class="text-info">name</h4>  
-                               <h4 class="text-danger">$ price</h4>  
-                               <input type="text" name="quantity" class="form-control" value="1" />  
-                               <input type="hidden" name="hidden_name" value="<?php echo $row["name"]; ?>" />  
-                               <input type="hidden" name="hidden_price" value="<?php echo $row["price"]; ?>" />  
+                                <?php 
+                                    require_once '../DataAccess/catalogDA.php';
+                                    $catalog = new catalogDA();
+                                    $catalog->showAllCatalog();
+                                ?>
+                              <input type="text" name="prodid" placeholder="Enter base on product ID provided" />  
+                               <input type="text" name="quantity" value="1" />  
                                <input type="submit" name="add_to_cart" style="margin-top:5px;" value="Add to Cart" />  
                           </div>  
                      </form>  
