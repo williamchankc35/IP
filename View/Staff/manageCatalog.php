@@ -30,22 +30,38 @@ and open the template in the editor.
                         <td><input type="text" name="cataPeriod1" value="" readonly="readonly" /></td>
                     </tr>
                     <tr>
-                        <td>Catalog Price</td>
-                        <td><textarea name="cataPrice" rows="4" cols="20">--Enter catalog price here--</textarea></td>
-                        <td>Catalog Price</td>
-                        <td><textarea name="cataPrice1" rows="4" cols="20" readonly="readonly"></textarea></td>
-                    </tr>
-                    <tr>
                         <td>Catalog Description</td>
                         <td><textarea name="cataDesc" rows="4" cols="20">--Enter catalog description here--</textarea></td>
                         <td>Catalog Description</td>
                         <td><textarea name="cataDesc1" rows="4" cols="20" readonly="readonly"></textarea></td>
                     </tr>
                     <tr>
-                        <td><input type="submit" value="Create" name="CProd" />
-                            <input type="submit" value="Retrieve" name="RProd" />
-                            <input type="submit" value="Update" name="UProd" />
-                            <input type="submit" value="Delete" name="DProd" /></td>
+                        <td>Catalog Price</td>
+                        <td><textarea name="cataPrice" rows="4" cols="20"></textarea></td>
+                        <td>Catalog Price</td>
+                        <td><textarea name="cataPrice1" rows="4" cols="20" readonly="readonly"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>
+                        </td>
+                        <td>
+                        <select name="cars">
+                            <option value="volvo">Volvo</option>
+                        </select>
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                        <select name="cars">
+                            <option value="volvo">Volvo</option>
+                        </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="submit" value="Create" name="CCatalog" />
+                            <input type="submit" value="Retrieve" name="RCatalog" />
+                            <input type="submit" value="Update" name="UCatalog" />
+                            <input type="submit" value="Delete" name="DCatalog" /></td>
                     </tr>
                     <tr>
                         <td><input type="reset" value="Reset" name="Reset" />
