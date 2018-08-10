@@ -43,7 +43,7 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
         <tr>
             <td><li class="no-sub"><a href="CustomerDetail.php" target="iframe">Profile</a></li></td>
             <td><li class="no-sub"><a href="UpdateCustomerDetail.php" target="iframe">Maintain</a></li></td>
-            <td><li class="no-sub"> <a href="Invoice.php" target="iframe">invoice</a></li></td>
+            <td><li class="no-sub"> <a href="GenerateInvoice.php" target="iframe">invoice</a></li></td>
         </tr>
         </table>
     </div>

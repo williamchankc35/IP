@@ -10,9 +10,10 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
 <html>
     <body>
     <h1 align="center"> Generate Invoice </h1>
-    <form name="frmRegistration" method="post" action="../../Controller/CustomerControl.php">
-    Month:<input type="text" class="demoInputBox" name="Month" value="" pattern="[0-12]" title="Month must between 1-12" required>  
-    Year :<input type="text" class="demoInputBox" name="Year" value="" pattern="[2000-2999]" title="Year must between 1-2999" required>
+    <form name="frmRegistration" method="post" action="Invoice.php">
+    <td>generate Invoice</td>
+    <td><input type="date" name="time1"> to <input type="date" name="time2"></td>
+    <td><input type="submit" value="Generate" name="generate" /></td>
     <input type="submit" name="generateInv"  value="Generate">
     </form>
     </body>

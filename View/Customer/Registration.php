@@ -67,7 +67,7 @@
         </head>
   <body>
    
-      <form name="frmRegistration" method="post" action="../../Controller/InvoiceControl.php">
+      <form name="frmRegistration" method="post" action="../../Controller/CustomerControl.php">
 	<table border="0" width="500" align="center" class="demo-table">
 		<?php if(!empty($success_message)) { ?>	
 		<div class="success-message"><?php if(isset($success_message)) echo $success_message;  ?></div>
