@@ -6,7 +6,7 @@ $prodDA = new productDA;
 if (isset($_POST['CProd'])) {
     $prodName = $_POST["prodName"];
     $prodQuantity = $_POST["prodQuantity"];
-    $prodAvailable = $_POST["productRB"];
+    $prodAvailable = $_POST["prodAvailable"];
     $prodPrice = $_POST["prodPrice"];
     $prodCategory = $_POST["prodCategory"];
     $product = new product($prodName, $prodQuantity, $prodAvailable, $prodPrice, $prodCategory);
@@ -20,8 +20,8 @@ if (isset($_POST['UProd'])) {
     $prodID = $_POST["prodID"];
     $prodName = $_POST["prodName"];
     $prodQuantity = $_POST["prodQuantity"];
-    $prodAvailable = $_POST["productRB"];
-    $prodPrice = $_POST["productPrice"];
+    $prodAvailable = $_POST["prodAvailable"];
+    $prodPrice = $_POST["prodPrice"];
     $prodCategory = $_POST["prodCategory"];
     $product = new product($prodName, $prodQuantity, $prodAvailable, $prodPrice, $prodCategory);
     $prodDA->updateProduct($product, $prodID);

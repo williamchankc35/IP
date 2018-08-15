@@ -11,24 +11,24 @@ and open the template in the editor.
 
 <CustomerTable>
     <CustomerRow>
-        <CusID>CS0001</CusID>
+        <CusID>CS1</CusID>
         <CusType>Corporate</CusType>
-        <CusName>Leong Tzee Yang</CusName>
-        <Username>LTY</Username>
-        <Password>LTY</Password>
+        <CusName>Tester1</CusName>
+        <Username>Tester1</Username>
+        <Password>123456</Password>
         <Email>LTY@hotmail.com</Email>
-        <CreditLimit>5000.00</CreditLimit>
+        <CreditLimit>3000.00</CreditLimit>
         <Status>Good</Status>
                     
     </CustomerRow>
       <CustomerRow>
-        <CusID>CS0002</CusID>
-        <CusType>Corporate</CusType>
-        <CusName>Leong Tzee Yang</CusName>
-        <Username>LTY</Username>
-        <Password>LTY</Password>
+        <CusID>CS2</CusID>
+        <CusType>Consumer</CusType>
+        <CusName>Tester2</CusName>
+        <Username>Tester2</Username>
+        <Password>123456</Password>
         <Email>LTY@hotmail.com</Email>
-        <CreditLimit>5000.00</CreditLimit>
+        <CreditLimit>0.00</CreditLimit>
         <Status>Good</Status>
                     
     </CustomerRow>

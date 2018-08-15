@@ -52,7 +52,10 @@ class productDA {
             $conn = new PDO("mysql:host=$this->servername;dbname=$this->dbname", $this->username, $this->password);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $sql = "UPDATE " . $this->tableName . " SET prodName = '" . $product->getProdName() .
-                    "' , prodQuantity = '" . $product->getProdQuantity() . "' , prodAvailable = '" . $product->getProdAvailable() . $product->getProdPrice() . $product->getProdCategory() .
+                    "' , prodQuantity = '" . $product->getProdQuantity() . 
+                    "' , prodAvailable = '" . $product->getProdAvailable() .
+                    "' , prodPrice = '" . $product->getProdPrice() .
+                    "' , prodCategory = '" . $product->getProdCategory() .
                     "' WHERE prodID = '" . $prodID . "'";
             $stmt = $conn->prepare($sql);
             $stmt->execute();

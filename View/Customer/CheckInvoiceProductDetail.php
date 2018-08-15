@@ -7,8 +7,8 @@
 	<thead>
 		<tr>
 			<th>Product ID</th>
-			<th>Product Type</th>
-                        <th>Product Description</th>
+			<th>Product Name</th>
+                        <th>Product Category</th>
                         <th>Product Price</th>                                        
 		</tr>
 	</thead>
@@ -24,8 +24,8 @@
           
             <tr>
 			<td><label><?php echo $row3['prodID']; ?></label></td>
-			<td><label><?php echo $row3['prodType'];  ?></label></td>                       	
-			<td><label><?php echo $row3['prodDesc']; ?></label></td>
+			<td><label><?php echo $row3['prodName'];  ?></label></td>                       	
+			<td><label><?php echo $row3['prodCategory']; ?></label></td>
                         <td><label><?php echo $row3['prodPrice']; ?></label></td>                 
                         
 		</tr>

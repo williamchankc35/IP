@@ -25,7 +25,7 @@
                             $mysql_hostname = "localhost";
                             $mysql_user = "root";
                             $mysql_password = "";
-                            $mysql_database = "fioreflowerdb";
+                            $mysql_database = "fioreflowershopdb";
                             $dbh = new PDO("mysql:dbname={$mysql_database};host={$mysql_hostname};port=3306", $mysql_user, $mysql_password);
                             $xmlObject = $xmlDoc->getElementsByTagName('CustomerRow');
                             $itemCount = $xmlObject->length;
