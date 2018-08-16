@@ -102,7 +102,7 @@ class invoiceDA {
     
     public function showAllInvoice() {
         echo "<table style='border: solid 1px black;'>";
-        echo "<tr><th>ID</th><th>Date</th><th>Customer ID</th><th>Customer Name</th>Create Date<th></th><th>Order ID</th><th>Order Date</th><th>Total Order Amount</th><th>Total Amount</th></tr>";
+        echo "<tr><th>ID</th><th>Date</th><th>Customer ID</th><th>Customer Name</th><th>Create Date</th></th><th>Order ID</th><th>Order Date</th><th>Total Order Amount</th><th>Total Amount</th></tr>";
         try {
             $conn = new PDO("mysql:host=$this->servername;dbname=$this->dbname", $this->username, $this->password);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

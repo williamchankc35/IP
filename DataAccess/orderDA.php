@@ -14,7 +14,7 @@ class orderDA {
 
     public function insertOrder(order $order) {
         try {
-            $sql = "INSERT INTO" . $this->tableName .
+            $sql = "INSERT INTO " . $this->tableName .
                     "(orderDate, "
                     . "orderCustID, orderCustName,"
                     . "orderPD, orderAddress, orderPDDate, orderPDTime, "

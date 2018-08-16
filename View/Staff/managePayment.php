@@ -59,9 +59,22 @@ and open the template in the editor.
                     ?>
                 </tr>
             </table>
+            <br/>
+            <table border="1">
+                <tr>
+                    <th>Invoice List</th>
+                </tr>
+                <tr>
+                    <?php
+                    include_once dirname(__FILE__) . '/../../DataAccess/invoiceDA.php';
+                    $showInvoice = new invoiceDA();
+                    $showInvoice->showAllInvoice();
+                    ?>
+                </tr>
+            </table>
         </form>
         <form>
-            
+
         </form>
     </body>
 </html>
