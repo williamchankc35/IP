@@ -2,43 +2,43 @@
 
     include_once dirname(__FILE__) . '/../DataAccess/catalogDA.php';
     
-    $da = new catalogDA;
+    $cataDA = new catalogDA;
     if (isset($_POST['CCatalog'])) {
-    $cataPeriod = $_POST["cataPeriod"];
+    $cataMonth = $_POST["cataMonth"];
+    $cataYear = $_POST["cataYear"];
+    $cataProducts = $_POST["cataProducts"];
     $cataPrice = $_POST["cataPrice"];
-    $cataDesc = $_POST["cataDesc"];
-    $cataCategory = $_POST["cataCategory"];
-    $catalog = new catalog($cataPeriod, $cataPrice, $cataDesc, $cataCategory);
-    $da->insertCatalog($catalog);
+    $catalog = new catalog($cataMonth, $cataYear, $cataProducts, $cataPrice);
+    $cataDA->insertCatalog($catalog);
 }
 
 if (isset($_POST['RCatalog'])) {
     $cataID = $_POST["cataID"];
-    $da->retrieveCatalog($cataID);
+    $cataDA->retrieveCatalog($cataID);
 }
 
     if (isset($_POST['UCatalog'])) {
-    $cataPeriod = $_POST["cataPeriod"];
+    $cataMonth = $_POST["cataMonth"];
+    $cataYear = $_POST["cataYear"];
+    $cataProducts = $_POST["cataProducts"];
     $cataPrice = $_POST["cataPrice"];
-    $cataDesc = $_POST["cataDesc"];
-    $cataCategory = $_POST["cataCategory"];
-    $catalog = new catalog($cataPeriod, $cataPrice, $cataDesc, $cataCategory);
-    $da->updateCatalog($catalog);
+    $catalog = new catalog($cataMonth, $cataYear, $cataProducts, $cataPrice);
+    $cataDA->updateCatalog($catalog);
 }
 
 
 if (isset($_POST['DCatalog'])) {
     $cataID = $_POST["cataID"];
-    $da->deleteCatalog($cataID);
+    $cataDA->deleteCatalog($cataID);
 }
 
 if (isset($_POST['SCatalog'])){
     $cataName = $_POST["prodCategory"];
-    $da->retrieveProductbyCatalog($cataName);
+    $cataDA->retrieveProductbyCatalog($cataName);
 }
 ?>
 <html>
-    <form action="../View/Customer/CustomerCatalog.php">
         <input type="submit" value="Back" name="Back" />
-    </form>
+    </form>    <form action="../View/Customer/manageCatalog.php">
+
 </html>

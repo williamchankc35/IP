@@ -11,10 +11,12 @@ class catalogDA {
     private $username = "root";
     private $password = "";
     private $dbname = "FioreFlowershopDB";
+    
+    
     public function insertCatalog(catalog $catalog) {
         try {
-            $sql = "INSERT INTO " . $this->tableName . " (cataPeriod, cataPrice, cataDesc) "
-                    . "VALUES ('" . $catalog->getCataPeriod() . "','" . $catalog->getCataPrice() . "','" . $catalog->getCataDesc() . "','" . $catalog->getCataCategory() . "')";
+            $sql = "INSERT INTO " . $this->tableName . " (cataMonth, cataYear, cataProducts, cataPrice) "
+                    . "VALUES ('" . $catalog->getCataMonth() . "','" . $catalog->getCataYear() . "','" . $catalog->getCataProducts() . "','" . $catalog->getCataPrice() . "')";
             
             $conn = new PDO("mysql:host=$this->servername;dbname=$this->dbname", $this->username, $this->password);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -50,8 +52,8 @@ class catalogDA {
         try {
             $conn = new PDO("mysql:host=$this->servername;dbname=$this->dbname", $this->username, $this->password);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $sql = "UPDATE " . $this->tableName . " SET cataPeriod = '" . $catalog->getCataPeriod() . "' , cataPrice = '" . 
-                    $catalog->getCataPrice() . "' , cataDesc = '" . $catalog->getCataDesc() . $catalog->getCataCategory() . 
+            $sql = "UPDATE " . $this->tableName . " SET cataMonth = '" . $catalog->getCataMonth() . "' , cataYear = '" . 
+                    $catalog->getCataYear() . "' , cataProducts = '" . $catalog->getCataProducts() . "' , cataPrice = '" . $catalog->getCataPrice() . 
                     "' WHERE cataID = '" . $catalog->getCataID() . "'";
             $stmt = $conn->prepare($sql);
             $stmt->execute();

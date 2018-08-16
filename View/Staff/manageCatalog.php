@@ -1,13 +1,8 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
         <meta charset="UTF-8">
-        <title></title>
+            <title></title>
     </head>
     <body>
         <form action="../../Controller/catalogControl.php" method="POST">
@@ -24,16 +19,22 @@ and open the template in the editor.
                         <td><input type="text" name="cataID" value="" /> Only for Retrieve,Update and Delete</td>
                     </tr>
                     <tr>
-                        <td>Catalog Period</td>
+                        <td>Catalog Year</td>
                         <td><input type="text" name="cataPeriod" value="" /></td>
-                        <td>Catalog Period</td>
+                        <td>Catalog Year</td>
                         <td><input type="text" name="cataPeriod1" value="" readonly="readonly" /></td>
                     </tr>
                     <tr>
-                        <td>Catalog Description</td>
+                        <td>Catalog Month</td>
                         <td><textarea name="cataDesc" rows="4" cols="20">--Enter catalog description here--</textarea></td>
-                        <td>Catalog Description</td>
+                        <td>Catalog Month</td>
                         <td><textarea name="cataDesc1" rows="4" cols="20" readonly="readonly"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>Catalog Products</td>
+                        <td><textarea name="cataPrice" rows="4" cols="20"></textarea></td>
+                        <td>Catalog Products</td>
+                        <td><textarea name="cataPrice1" rows="4" cols="20" readonly="readonly"></textarea></td>
                     </tr>
                     <tr>
                         <td>Catalog Price</td>
@@ -84,4 +85,5 @@ and open the template in the editor.
             </table>
         </form>
     </body>
+    </head>
 </html>
