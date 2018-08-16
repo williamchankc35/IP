@@ -38,7 +38,7 @@ if (isset($_POST['SCatalog'])){
 }
 ?>
 <html>
+        <form action="../View/Staff/manageCatalog.php">
         <input type="submit" value="Back" name="Back" />
-    </form>    <form action="../View/Customer/manageCatalog.php">
-
+        </form>
 </html>

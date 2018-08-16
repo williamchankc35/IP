@@ -1,53 +1,45 @@
 <?php
 
-/* 
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 
-class catalog{
-    private $cataMonth;
-    private $cataYear;
-    private $cataProducts;
-    private $cataPrice;
-    
-    function __construct($cataMonth, $cataYear, $cataProducts, $cataPrice) {
-        $this->cataMonth = $cataMonth;
-        $this->cataYear = $cataYear;
-        $this->cataProducts = $cataProducts;
-        $this->cataPrice = $cataPrice;
-    }
-    
-    function getCataMonth() {
-        return $this->cataMonth;
+class catalog {
+
+    private $cataID;
+    private $cataDate;
+    private $cataDesc;
+
+    function __construct($cataID, $cataDate, $cataDesc) {
+        $this->cataID = $cataID;
+        $this->cataDate = $cataDate;
+        $this->cataDesc = $cataDesc;
     }
 
-    function getCataYear() {
-        return $this->cataYear;
+    function getCataID() {
+        return $this->cataID;
     }
 
-    function getCataProducts() {
-        return $this->cataProducts;
+    function getCataDate() {
+        return $this->cataDate;
     }
 
-    function getCataPrice() {
-        return $this->cataPrice;
+    function getCataDesc() {
+        return $this->cataDesc;
     }
 
-    function setCataMonth($cataMonth) {
-        $this->cataMonth = $cataMonth;
+    function setCataID($cataID) {
+        $this->cataID = $cataID;
     }
 
-    function setCataYear($cataYear) {
-        $this->cataYear = $cataYear;
+    function setCataDate($cataDate) {
+        $this->cataDate = $cataDate;
     }
 
-    function setCataProducts($cataProducts) {
-        $this->cataProducts = $cataProducts;
+    function setCataDesc($cataDesc) {
+        $this->cataDesc = $cataDesc;
     }
 
-    function setCataPrice($cataPrice) {
-        $this->cataPrice = $cataPrice;
-    }
 }

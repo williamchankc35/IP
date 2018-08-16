@@ -32,7 +32,7 @@ and open the template in the editor.
                     </tr>
                     <tr>
                         <td>Product Quantity</td>
-                        <td><textarea name="prodQuantity" rows="4" cols="20">--Enter product quantity here--</textarea></td>
+                        <td><textarea name="prodQuantity" rows="4" cols="20"></textarea></td>
                         <td>Product Quantity</td>
                         <td><textarea name="prodQuantity1" rows="4" cols="20" readonly="readonly"></textarea></td>
                     </tr>

@@ -16,8 +16,7 @@ try {
 
     $conn->exec("CREATE TABLE $dbname.catalog(
         cataID INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-        cataPeriod DATE,
-        cataPrice DOUBLE,
+        cataDate DATE,
         cataDesc VARCHAR(200)
         )");
     $conn->exec("CREATE TABLE $dbname.customer(
@@ -78,10 +77,10 @@ try {
     $conn->exec("CREATE TABLE $dbname.product(
         prodID INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
         prodName VARCHAR(50),
-        prodQuantity INT,
         prodAvailable VARCHAR(10),
         prodPrice DOUBLE,
-        prodCategory VARCHAR(200)
+        prodCategory VARCHAR(200),
+        cataID INT(6)
         )");
     $conn->exec("CREATE TABLE $dbname.user(
         userID INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,

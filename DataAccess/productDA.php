@@ -2,16 +2,15 @@
 
 //include_once 'connectDB.php';
 include_once 'TableRows.php';
-include_once dirname(__FILE__).'/../Class/product.php';
+include_once dirname(__FILE__) . '/../Class/product.php';
 
 class productDA {
-    
+
     private $tableName = "product";
     private $servername = "localhost";
     private $username = "root";
     private $password = "";
     private $dbname = "FioreFlowershopDB";
-    
 
     public function insertProduct(product $product) {
         try {
@@ -39,12 +38,15 @@ class productDA {
             $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
             foreach (new TableRows(new RecursiveArrayIterator($stmt->fetchAll())) as $k => $v) {
                 echo $v;
+                $product = new product($result['prodName'], $result['prodAvailable'], $result['prodPrice'], $result['prodCategory'], $result['cataID']);
             }
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
+            $product = null;
         }
         $conn = null;
         echo "</table>";
+        return $product;
     }
 
     public function updateProduct(product $product, $prodID) {
@@ -52,7 +54,7 @@ class productDA {
             $conn = new PDO("mysql:host=$this->servername;dbname=$this->dbname", $this->username, $this->password);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $sql = "UPDATE " . $this->tableName . " SET prodName = '" . $product->getProdName() .
-                    "' , prodQuantity = '" . $product->getProdQuantity() . 
+                    "' , prodQuantity = '" . $product->getProdQuantity() .
                     "' , prodAvailable = '" . $product->getProdAvailable() .
                     "' , prodPrice = '" . $product->getProdPrice() .
                     "' , prodCategory = '" . $product->getProdCategory() .
@@ -98,21 +100,7 @@ class productDA {
         $conn = null;
         echo "</table>";
     }
-    
-    public function retrieveProductData($prodID) {
-        try {
-            $conn = new PDO("mysql:host=$this->servername;dbname=$this->dbname", $this->username, $this->password);
-            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $stmt = $conn->prepare("SELECT prodName, prodQuantity, prodAvailable, prodPrice, prodCategory FROM `" . $this->tableName . "` WHERE prodID='" . $prodID . "'");
-            $stmt->execute();
-            $result = $stmt->fetch(PDO::FETCH_ASSOC);
-            $product = new product($result['prodName'], $result['prodQuantity'], $result['prodAvailable'], $result['prodPrice'], $result['prodCategory']);
-        } catch (PDOException $e) {
-            echo "Error: " . $e->getMessage();
-            $product = null;
-        }
-        return $product;
-    }
+
 }
 
 //$testprod = new productDA();
