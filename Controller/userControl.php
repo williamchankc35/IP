@@ -6,7 +6,7 @@ $userDA = new userDA;
 if (isset($_POST['CUser'])) {
     $userType = $_POST["userType"];
     $userName = $_POST["userName"];
-    $userPassword = $_POST["userPassword"];
+    $userPassword = sha1($_POST["userPassword"]);
     $userStatus = $_POST["userStatus"];
     $user = new user($userType, $userName, $userPassword, $userStatus);
     $userDA->insertUser($user);
@@ -19,7 +19,7 @@ if (isset($_POST['UUser'])) {
     $userID = $_POST["userID"];
     $userType = $_POST["userType"];
     $userName = $_POST["userName"];
-    $userPassword = $_POST["userPassword"];
+    $userPassword = sha1($_POST["userPassword"]);
     $userStatus = $_POST["userStatus"];
     $user = new user($userType, $userName, $userPassword, $userStatus);
     $userDA->updateUser($user, $userID);
