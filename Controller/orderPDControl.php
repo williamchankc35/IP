@@ -46,8 +46,8 @@ if (isset($_POST['generate3'])) {
     $orderPDDA->pickupReport($dailyPickup1, $dailyPickup2);
 }
 if (isset($_POST['generate4'])) {
-    $dailyPickup = $_POST["dailyDelivery"];
-    $orderPDDA->dailyPickupReport($dailyPickup);
+    $dailyDelivery = $_POST["dailyDelivery"];
+    $orderPDDA->dailyDeliveryReport($dailyDelivery);
 }
 if (isset($_POST['generate5'])) {
     $dailyDelivery1 = $_POST["dailyDelivery1"];
