@@ -1,14 +1,18 @@
-<?php
+/*
+ * @author Ng Choon Yik
+ */
 
-    include_once dirname(__FILE__) . '/../DataAccess/catalogDA.php';
-    
-    $cataDA = new catalogDA;
-    if (isset($_POST['CCatalog'])) {
-    $cataMonth = $_POST["cataMonth"];
-    $cataYear = $_POST["cataYear"];
+<?php
+include_once dirname(__FILE__) . '/../DataAccess/catalogDA.php';
+
+$cataDA = new catalogDA;
+if (isset($_POST['CCatalog'])) {
+    $cataID = $_POST["cataID"];
+    $cataDate = $_POST["cataDate"];
+    $cataDesc = $_POST["cataDesc"];
     $cataProducts = $_POST["cataProducts"];
-    $cataPrice = $_POST["cataPrice"];
-    $catalog = new catalog($cataMonth, $cataYear, $cataProducts, $cataPrice);
+
+    $catalog = new catalog($cataID, $cataDate, $cataDesc, $cataProducts);
     $cataDA->insertCatalog($catalog);
 }
 
@@ -17,12 +21,12 @@ if (isset($_POST['RCatalog'])) {
     $cataDA->retrieveCatalog($cataID);
 }
 
-    if (isset($_POST['UCatalog'])) {
-    $cataMonth = $_POST["cataMonth"];
-    $cataYear = $_POST["cataYear"];
+if (isset($_POST['UCatalog'])) {
+    $cataID = $_POST["cataID"];
+    $cataDate = $_POST["cataDate"];
+    $cataDesc = $_POST["cataDesc"];
     $cataProducts = $_POST["cataProducts"];
-    $cataPrice = $_POST["cataPrice"];
-    $catalog = new catalog($cataMonth, $cataYear, $cataProducts, $cataPrice);
+    $catalog = new catalog($cataID, $cataDate, $cataDesc, $cataProducts);
     $cataDA->updateCatalog($catalog);
 }
 
@@ -32,13 +36,23 @@ if (isset($_POST['DCatalog'])) {
     $cataDA->deleteCatalog($cataID);
 }
 
-if (isset($_POST['SCatalog'])){
+if (isset($_POST['SCatalog'])) {
     $cataName = $_POST["prodCategory"];
     $cataDA->retrieveProductbyCatalog($cataName);
 }
+
+if (isset($_POST['SDCatalog'])) {
+    $cataName = $_POST["cataDate"];
+    $cataDA->retrieveCatalogByDate($cataName);
+}
+
 ?>
 <html>
-        <form action="../View/Staff/manageCatalog.php">
+<!--    <form action="../View/Staff/manageCatalog.php">
         <input type="submit" value="Back" name="Back" />
-        </form>
+    </form>-->
+    
+    <form action="../View/Customer/CustomerCatalog1.php">
+        <input type="submit" value="Back" name="Back" />
+    </form>
 </html>

@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
+/*
+ * @author Ng Choon Yik
+ */
 -->
 <html>
     <head>
@@ -10,27 +10,26 @@ and open the template in the editor.
         <title></title>
     </head>
     <form action="../../Controller/CatalogControl.php"  method="POST">
-    <body>
-        Catalog Category: 
-        <select name="prodCategory">
-            <option value="Spring" selected>Spring</option>
-            <option value="Summer">Summer</option>
-            <option value="Autumn">Autumn</option>
-            <option value="Winter">Winter</option>
-            <option value="Valentine">Valentine</option>
-            <option value="Graduation Bouquet">Graduation Bouquet</option>
-        </select>
-        
-        <input type="submit" value="Refresh" name="SCatalog" />
-        
-        </br/></br/>
-        
-        <?php        
-        include_once dirname(__FILE__) . '/../../DataAccess/catalogDA.php';
-        $show = new catalogDA();
-        $show->showAllCatalog();
-        ?>
-        
-    </body>
+        <body>
+            Catalog Date: 
+
+            <select name="cataDate">
+                <option value="2018-08" selected>2018-08</option>
+                <option value="2018-09">2018-09</option>
+                <option value="2018-10">2018-10</option>
+                <option value="2018-11">2018-11</option>
+                <option value="2018-12">2018-12</option>
+            </select>
+            <input type="submit" value="Refresh" name="SDCatalog" />
+
+            <br/><br/>
+
+            <?php
+            include_once dirname(__FILE__) . '/../../DataAccess/catalogDA.php';
+            $show = new catalogDA();
+            $show->showAllCatalog();
+            ?>
+
+        </body>
     </form>
 </html>

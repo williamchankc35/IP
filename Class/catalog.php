@@ -1,9 +1,7 @@
 <?php
 
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * @author Ng Choon Yik
  */
 
 class catalog {
@@ -11,11 +9,13 @@ class catalog {
     private $cataID;
     private $cataDate;
     private $cataDesc;
-
-    function __construct($cataID, $cataDate, $cataDesc) {
+    private $cataProducts;
+    
+    function __construct($cataID, $cataDate, $cataDesc, $cataProducts) {
         $this->cataID = $cataID;
         $this->cataDate = $cataDate;
         $this->cataDesc = $cataDesc;
+        $this->cataProducts = $cataProducts;
     }
 
     function getCataID() {
@@ -30,6 +30,10 @@ class catalog {
         return $this->cataDesc;
     }
 
+    function getCataProducts() {
+        return $this->cataProducts;
+    }
+
     function setCataID($cataID) {
         $this->cataID = $cataID;
     }
@@ -42,4 +46,7 @@ class catalog {
         $this->cataDesc = $cataDesc;
     }
 
+    function setCataProducts($cataProducts) {
+        $this->cataProducts = $cataProducts;
+    }
 }

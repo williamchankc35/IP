@@ -1,5 +1,8 @@
-<?php
+/*
+ * @author Ng Choon Yik
+ */
 
+<?php
 //include_once 'connectDB.php';
 include_once 'TableRows.php';
 include_once dirname(__FILE__) . '/../Class/product.php';
@@ -14,12 +17,14 @@ class productDA {
 
     public function insertProduct(product $product) {
         try {
-            $sql = "INSERT INTO " . $this->tableName . " (prodName, prodQuantity, prodAvailable, prodPrice, prodCategory) "
-                    . "VALUES ('" . $product->getProdName() . "','" . $product->getProdQuantity() . "','" . $product->getProdAvailable()
-                    . "','" . $product->getProdPrice() . "','" . $product->getProdCategory() . "')";
+            $sql = "INSERT INTO " . $this->tableName . " (prodName, prodAvailable, prodPrice, prodCategory, cataID) "
+                    . "VALUES (?,?,?,?,?)";
+            
+            
             $conn = new PDO("mysql:host=$this->servername;dbname=$this->dbname", $this->username, $this->password);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $conn->exec($sql);
+            $stmt = $conn->prepare($sql);
+            $stmt->execute([$product->getProdName(), $product->getProdAvailable(),$product->getProdPrice(),$product->getProdCategory(),$product->getCataID()]);
             echo "New record created successfully";
         } catch (PDOException $e) {
             echo $sql . "<br>" . $e->getMessage();
@@ -29,7 +34,7 @@ class productDA {
 
     public function retrieveProduct($prodID) {
         echo "<table style='border: solid 1px black;'>";
-        echo "<tr><th>ID</th><th>Name</th><th>Quantity</th><th>Available?</th></tr>";
+        echo "<tr><th>ID</th><th>Name</th><th>Available</th><th>Price</th></tr>";
         try {
             $conn = new PDO("mysql:host=$this->servername;dbname=$this->dbname", $this->username, $this->password);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -54,10 +59,10 @@ class productDA {
             $conn = new PDO("mysql:host=$this->servername;dbname=$this->dbname", $this->username, $this->password);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $sql = "UPDATE " . $this->tableName . " SET prodName = '" . $product->getProdName() .
-                    "' , prodQuantity = '" . $product->getProdQuantity() .
                     "' , prodAvailable = '" . $product->getProdAvailable() .
                     "' , prodPrice = '" . $product->getProdPrice() .
                     "' , prodCategory = '" . $product->getProdCategory() .
+                    "' , cataID = '" . $product->getCataID() .
                     "' WHERE prodID = '" . $prodID . "'";
             $stmt = $conn->prepare($sql);
             $stmt->execute();
@@ -84,7 +89,7 @@ class productDA {
 
     public function showAllProduct() {
         echo "<table style='border: solid 1px black;'>";
-        echo "<tr><th>ID</th><th>Name</th><th>Quantity</th><th>Available?</th><th>Price</th><th>Category</th></tr>";
+        echo "<tr><th>ID</th><th>Name</th><th>Available</th><th>Price</th><th>Category</th><th>Catalog ID</th></tr>";
         try {
             $conn = new PDO("mysql:host=$this->servername;dbname=$this->dbname", $this->username, $this->password);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

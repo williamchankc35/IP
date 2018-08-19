@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
+<!--
+/*
+ * @author Ng Choon Yik
+ */
+-->
 -->
 <html>
     <head>
@@ -27,26 +29,14 @@ and open the template in the editor.
                     <tr>
                         <td>Product Name</td>
                         <td><input type="text" name="prodName" value="" /></td>
-                        <td>Product Name</td>
-                        <td><input type="text" name="prodName1" value="" readonly="readonly" /></td>
-                    </tr>
-                    <tr>
-                        <td>Product Quantity</td>
-                        <td><textarea name="prodQuantity" rows="4" cols="20"></textarea></td>
-                        <td>Product Quantity</td>
-                        <td><textarea name="prodQuantity1" rows="4" cols="20" readonly="readonly"></textarea></td>
                     </tr>
                     <tr>
                         <td>Product Available?</td>
-                        <td><input type="radio" name="productRB" value="Yes" />Yes<input type="radio" name="productRB" value="No" />No</td>
-                        <td>Product Available?</td>
-                        <td><input type="text" name="prodAvailable" value="" readonly="readonly" /></td>
+                        <td><input type="radio" name="prodAvailable" value="Yes" />Yes<input type="radio" name="prodAvailable" value="No" />No</td>
                     </tr>
                     <tr>
                         <td>Product Price</td>
                         <td><textarea name="prodPrice" rows="4" cols="20"></textarea></td>
-                        <td>Product Price</td>
-                        <td><textarea name="prodPrice1" rows="4" cols="20" readonly="readonly"></textarea></td>
                     </tr>
                     <tr>
                         <td>Product Category</td>
@@ -60,17 +50,10 @@ and open the template in the editor.
                             <option value="Graduation Bouquet">Graduation Bouquet</option>
                         </select>                         
                         </td>
-                        <td>Product Category</td>
-                        <td>
-                        <select name="prodCategory1">
-                            <option value="1">Spring</option>
-                            <option value="2">Summer</option>
-                            <option value="3">Autumn</option>
-                            <option value="4">Winter</option>
-                            <option value="5" selected>Valentine</option>
-                            <option value="6">graduation bouquet</option>
-                        </select>>
-                        </td>
+                    </tr>
+                    <tr>
+                        <td>Category ID</td>
+                        <td><textarea name="cataID"  rows="4" cols="20"></textarea></td>
                     </tr>
                     <tr>
                         <td>

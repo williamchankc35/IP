@@ -1,7 +1,7 @@
 <?php
 
 /*
- * @author William
+ * @author Ng Choon Yik
  */
 
 class product {

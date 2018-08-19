@@ -1,3 +1,7 @@
+/*
+ * @author Ng Choon Yik
+ */
+
 <?php
 include_once dirname(__FILE__) . '/../DataAccess/productDA.php';
 //include_once dirname(__FILE__) . '/../Class/product.php';
@@ -5,11 +9,11 @@ include_once dirname(__FILE__) . '/../DataAccess/productDA.php';
 $prodDA = new productDA;
 if (isset($_POST['CProd'])) {
     $prodName = $_POST["prodName"];
-    $prodQuantity = $_POST["prodQuantity"];
     $prodAvailable = $_POST["prodAvailable"];
     $prodPrice = $_POST["prodPrice"];
     $prodCategory = $_POST["prodCategory"];
-    $product = new product($prodName, $prodQuantity, $prodAvailable, $prodPrice, $prodCategory);
+    $cataID = $_POST["cataID"];
+    $product = new product($prodName, $prodAvailable, $prodPrice, $prodCategory, $cataID);
     $prodDA->insertProduct($product);
 }
 if (isset($_POST['RProd'])) {
@@ -19,11 +23,11 @@ if (isset($_POST['RProd'])) {
 if (isset($_POST['UProd'])) {
     $prodID = $_POST["prodID"];
     $prodName = $_POST["prodName"];
-    $prodQuantity = $_POST["prodQuantity"];
     $prodAvailable = $_POST["prodAvailable"];
     $prodPrice = $_POST["prodPrice"];
     $prodCategory = $_POST["prodCategory"];
-    $product = new product($prodName, $prodQuantity, $prodAvailable, $prodPrice, $prodCategory);
+    $cataID = $_POST["cataID"];
+    $product = new product($prodName, $prodAvailable, $prodPrice, $prodCategory, $cataID);
     $prodDA->updateProduct($product, $prodID);
 }
 if (isset($_POST['DProd'])) {
